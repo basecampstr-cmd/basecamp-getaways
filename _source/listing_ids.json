@@ -1,0 +1,123 @@
+{
+  "properties": [
+    {
+      "name": "Watersedge-Anderson",
+      "id": "c958ef1d-fd69-4f06-9b3e-da93015ea71a",
+      "airbnb_id": "1611741402478216658",
+      "vrbo_id": "321.2061091.2625623",
+      "direct_id": "f2a81b76-096e-558f-8252-c14e4bfe0b6c"
+    },
+    {
+      "name": "Hooked on Hartwell",
+      "id": "a6ceffd1-3c76-4be3-adf0-6e6415053fec",
+      "airbnb_id": "671891813466045010",
+      "vrbo_id": "321.2933399.3505439",
+      "direct_id": "ae141feb-8cf8-5fdf-b69c-5545046b3f82"
+    },
+    {
+      "name": "Quittin Time Cottage-Lake Hartwell",
+      "id": "2efce220-5441-477f-a298-3d0d7826ecbc",
+      "airbnb_id": "1568243456510502398",
+      "vrbo_id": "321.5144550.5718712",
+      "direct_id": "da25f0f1-2b6a-56c7-962d-fb740fc3a5f1"
+    },
+    {
+      "name": "The Keowee Getaway",
+      "id": "5f557788-3bbb-471e-bae5-9bfddb1ec415",
+      "airbnb_id": "897098840786625306",
+      "vrbo_id": "321.3432008.4005136",
+      "direct_id": "7b68b4de-475f-536e-aaef-ff296a47e8a1"
+    },
+    {
+      "name": "Lake Hartwell Oasis-Anderson",
+      "id": "3275bd72-d38f-49ae-b420-850163d06c42",
+      "airbnb_id": "1394241716249453426",
+      "vrbo_id": null,
+      "direct_id": "78662fc2-e402-558e-8282-89196dd29fe1"
+    },
+    {
+      "name": "Hartwell Haven",
+      "id": "3dff7465-2b9f-4759-9e29-af000642d0ec",
+      "airbnb_id": "1677958658822313514",
+      "vrbo_id": null,
+      "direct_id": "3f1bafbc-b6bc-5287-9f85-d42051b15ad2"
+    },
+    {
+      "name": "Walker Cove",
+      "id": "09e255cd-fe28-4bf6-8f51-829b01f1f3b8",
+      "airbnb_id": "1695798943915687467",
+      "vrbo_id": null,
+      "direct_id": "2c514e4b-ad2e-5ab7-9f93-edcf6e2c255d"
+    },
+    {
+      "name": "Lake Place",
+      "id": "7d532d3f-1362-4116-9dec-4eff37d7935d",
+      "airbnb_id": "1696386091498000918",
+      "vrbo_id": null,
+      "direct_id": "0ea069f2-4368-5eee-bec9-bc523e89bf06"
+    },
+    {
+      "name": "Foothills Cottage",
+      "id": "9e69f4f5-36f7-41eb-8621-9c614291d06b",
+      "airbnb_id": "1700177445543701952",
+      "vrbo_id": null,
+      "direct_id": "d09e0f62-6fdb-504b-a61d-154ab5a3e788"
+    },
+    {
+      "name": "Endless Views-Mineral Bluff",
+      "id": "e58aa0e8-7cbf-42af-866c-9bd14108a095",
+      "airbnb_id": "1441306721855383317",
+      "vrbo_id": "321.4848472.5422638",
+      "direct_id": "98327444-ba69-576e-ac61-8dc4a705c1bc"
+    },
+    {
+      "name": "River Run Retreat-Hiawassee",
+      "id": "330f73a1-7e54-414f-b1d8-6a2db07e4caf",
+      "airbnb_id": "924880143466065115",
+      "vrbo_id": "321.3486060.4059191",
+      "direct_id": "69d69f2b-8fcb-54e0-aa4d-7390aacf48f0"
+    },
+    {
+      "name": "Star Mountain-Blue Ridge",
+      "id": "7dc17a86-943b-42fe-b828-12a4d0bde5d7",
+      "airbnb_id": "1079587399018665167",
+      "vrbo_id": "321.3907598.4481743",
+      "direct_id": "ed1ea30a-90eb-508f-8690-6ba6cb87970e"
+    },
+    {
+      "name": "River Run Retreat Studio-Hiawassee",
+      "id": "0e232957-6085-4238-9df3-a083ea9c1c4c",
+      "airbnb_id": "924964707319548986",
+      "vrbo_id": "321.3487520.4060651",
+      "direct_id": "ee8eaa18-b774-5160-9de4-fda50cdda032"
+    },
+    {
+      "name": "Cozy Bear Cabin-Blue Ridge",
+      "id": "3819bad2-4c5c-4fd0-8947-f46a963fc104",
+      "airbnb_id": "1035356485735504432",
+      "vrbo_id": "321.3736766.4310911",
+      "direct_id": "74d7e9ac-c9a7-55f5-9d28-128a93cdf988"
+    },
+    {
+      "name": "Blue Chalet-Mineral Bluff",
+      "id": "469eaf1e-f10e-4ea8-a9d2-3ab83ece60de",
+      "airbnb_id": "1035406818240049069",
+      "vrbo_id": "321.3734619.4308764",
+      "direct_id": "7de39393-eaf5-5d88-8c34-73c4c9632209"
+    },
+    {
+      "name": "Blue Wall Farm Basecamp-Travelers Rest",
+      "id": "e8a749e1-19aa-4d4b-9e39-3d745d04e418",
+      "airbnb_id": "772479770337277113",
+      "vrbo_id": "321.3167039.3740132",
+      "direct_id": "ff22b410-d710-5cfe-8bb9-217254dbd233"
+    },
+    {
+      "name": "Saluda River Basecamp-Greenville",
+      "id": "f881493d-3bfd-4a45-8a55-2ea1b15fa4c1",
+      "airbnb_id": "1349627462634563994",
+      "vrbo_id": null,
+      "direct_id": "ffdc44f8-e430-582a-bf05-59376c53356a"
+    }
+  ]
+}
