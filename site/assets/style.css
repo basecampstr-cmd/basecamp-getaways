@@ -263,20 +263,32 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
   .brand-logo{height:46px}
   .nav.scrolled .brand-logo{height:42px}
 
-  /* hero + search */
-  .hero{min-height:90vh}
-  .hero h1{font-size:clamp(2.6rem,12vw,3.6rem)}
-  .hero p{font-size:1.02rem}
-  .hero-cta{gap:10px}
-  .hero-cta .btn{padding:13px 22px;font-size:.9rem}
-  .search{flex-direction:column;padding:10px;gap:2px;margin-top:28px}
-  .search-field{border-right:0;border-bottom:1px solid var(--line);width:100%;padding:11px 14px}
-  .search-btn{width:100%;margin:8px 0 2px;padding:15px}
+  /* hero + search — give the heading room, keep the search compact */
+  .hero{min-height:auto;padding:118px 0 44px;align-items:flex-start}
+  .hero .eyebrow{margin-bottom:6px}
+  .hero h1{font-size:clamp(2.1rem,8.5vw,2.9rem);margin-bottom:14px}
+  .hero p{font-size:.96rem}
+  .hero-cta{gap:9px;margin-top:22px}
+  .hero-cta .btn{padding:11px 17px;font-size:.82rem}
+  .search{display:grid;grid-template-columns:1fr 1fr;padding:8px;gap:6px;margin-top:20px;border-radius:14px}
+  .search-field{border-right:0;width:auto;padding:8px 12px;background:rgba(28,36,30,.04);border-radius:8px}
+  .search-field label{font-size:.58rem;margin-bottom:1px}
+  .search-field select,.search-field input{font-size:.84rem}
+  .search-btn{grid-column:1 / -1;width:100%;margin:2px 0 0;padding:13px}
+
+  /* horizontal scroll for the long lists on mobile */
+  .grid,.rev-grid,.owners-grid{display:flex;grid-template-columns:none;overflow-x:auto;gap:16px;
+    scroll-snap-type:x mandatory;padding:4px 0 16px;-webkit-overflow-scrolling:touch}
+  .grid::-webkit-scrollbar,.rev-grid::-webkit-scrollbar,.owners-grid::-webkit-scrollbar{height:6px}
+  .grid::-webkit-scrollbar-thumb,.owners-grid::-webkit-scrollbar-thumb{background:rgba(28,36,30,.22);border-radius:3px}
+  .rev-grid::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:3px}
+  .grid>.card,.owners-grid>.owner-card{flex:0 0 80vw;scroll-snap-align:start}
+  .rev-grid>.rev{flex:0 0 82vw;scroll-snap-align:start}
 
   /* sections */
-  .collection,.owners,.reviews{padding:60px 0}
-  .cta-band{padding:64px 18px}
-  .sec-head{margin-bottom:34px}
+  .collection,.owners,.reviews{padding:54px 0}
+  .cta-band{padding:60px 18px}
+  .sec-head{margin-bottom:30px}
   .sec-head h2{font-size:clamp(2rem,8vw,2.6rem)}
   .scroll-track>.card{flex:0 0 80vw}
   .scroll-btn{display:none}
