@@ -270,11 +270,17 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
   .hero p{font-size:.96rem}
   .hero-cta{gap:9px;margin-top:22px}
   .hero-cta .btn{padding:11px 17px;font-size:.82rem}
-  .search{display:grid;grid-template-columns:1fr 1fr;padding:8px;gap:6px;margin-top:20px;border-radius:14px}
-  .search-field{border-right:0;width:auto;padding:8px 12px;background:rgba(28,36,30,.04);border-radius:8px}
-  .search-field label{font-size:.58rem;margin-bottom:1px}
-  .search-field select,.search-field input{font-size:.84rem}
-  .search-btn{grid-column:1 / -1;width:100%;margin:2px 0 0;padding:13px}
+  .hero-dots{display:none}   /* keep dots off the search on mobile */
+  .search{display:grid;grid-template-columns:1fr 1fr;padding:6px;gap:5px;margin-top:16px;border-radius:12px;
+    background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.3);box-shadow:0 10px 30px -18px rgba(0,0,0,.6)}
+  .search-field{border-right:0;width:auto;padding:5px 10px;background:rgba(255,255,255,.1);border-radius:7px}
+  .search-field label{font-size:.52rem;margin-bottom:0;color:rgba(255,255,255,.82);letter-spacing:.1em}
+  .search-field select,.search-field input{font-size:.8rem;color:#fff}
+  .search-field select option{color:#1c241e}
+  .search-field input::-webkit-datetime-edit{color:#fff}
+  .search-field input::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.85}
+  .search-btn{grid-column:1 / -1;width:100%;margin:1px 0 0;padding:11px;font-size:.88rem}
 
   /* horizontal scroll for the long lists on mobile */
   .grid,.rev-grid,.owners-grid{display:flex;grid-template-columns:none;overflow-x:auto;gap:16px;
