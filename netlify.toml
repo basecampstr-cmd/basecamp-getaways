@@ -1,12 +1,10 @@
 # Netlify configuration for Basecamp Getaways
-# The site is plain static HTML/CSS/JS — no build step required.
-# Everything that gets published lives in the /site folder.
+# Static HTML/CSS/JS — no build step. Published folder is /site.
 
 [build]
   publish = "site"
   command = ""
 
-# Nice-to-have security + caching headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -14,7 +12,19 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# CSS/JS are unversioned filenames, so always revalidate to pick up updates fast.
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Photos rarely change — cache them for a day for speed.
+[[headers]]
+  for = "/assets/hero/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
