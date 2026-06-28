@@ -47,7 +47,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 .hero-slide.active{opacity:1}
 .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,25,18,.5),rgba(15,25,18,.35) 40%,rgba(15,25,18,.72))}
 .hero-inner{position:relative;z-index:2;max-width:720px;padding-top:80px}
-.hero-dots{position:absolute;z-index:2;bottom:26px;left:50%;transform:translateX(-50%);display:flex;gap:9px}
+.hero-dots{position:absolute;z-index:2;bottom:22px;right:30px;display:flex;gap:9px}
 .hero-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.4);transition:.3s;cursor:pointer}
 .hero-dots span.on{background:#fff;width:26px;border-radius:5px}
 
