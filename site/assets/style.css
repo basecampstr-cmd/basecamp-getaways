@@ -51,6 +51,13 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 .hero-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.4);transition:.3s;cursor:pointer}
 .hero-dots span.on{background:#fff;width:26px;border-radius:5px}
 
+/* PAGE HERO (interior pages like Design Services) */
+.page-hero{background:var(--forest);color:#f3ede0;padding:132px 0 66px;text-align:center;position:relative}
+.page-hero h1{font-size:clamp(2.4rem,5.5vw,3.6rem);color:#fff;margin:10px 0 16px}
+.page-hero p{max-width:640px;margin:0 auto;opacity:.85;font-weight:300;font-size:1.05rem}
+.page-hero-cta{margin-top:26px}
+.card-desc{color:var(--muted);font-size:.93rem;margin-top:10px;line-height:1.5}
+
 /* SCROLLER */
 .scroller{position:relative;margin:0 -4px}
 .scroll-track{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
