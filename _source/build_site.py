@@ -13,6 +13,11 @@ HERO_SRC = os.path.join(BASE, "hero_assets")
 LOGO_SRC = os.path.join(BASE, "logo.png")   # drop the badge here to enable the image logo
 HAS_LOGO = os.path.exists(LOGO_SRC)
 HERO_FILES = sorted([f for f in os.listdir(HERO_SRC) if f.lower().endswith(('.jpg','.jpeg','.png','.webp'))]) if os.path.isdir(HERO_SRC) else []
+# The owners-gate photo lives in hero_assets (so it is copied to assets/hero and
+# gets the same day-long cache) but must NOT appear in the homepage slideshow —
+# only the numbered hero shots do.
+SLIDE_FILES = [f for f in HERO_FILES if not f.lower().startswith("owners")]
+OWNERS_SRC = os.path.join(BASE, "owners_template.html")   # standalone lake-gate splash
 
 catalog = json.load(open(os.path.join(BASE, "property_catalog.json")))["properties"]
 images = {p["name"]: p["images"] for p in json.load(open(os.path.join(BASE, "property_images.json")))["properties"]}
@@ -326,7 +331,7 @@ def page_shell(title, desc, body, depth=0, extra_head=""):
 
 def build_index():
     # hero slideshow uses local optimized photos in assets/hero/
-    hero_srcs = [f"assets/hero/{f}" for f in HERO_FILES] or [records["Endless Views-Mineral Bluff"]["hero"]]
+    hero_srcs = [f"assets/hero/{f}" for f in SLIDE_FILES] or [records["Endless Views-Mineral Bluff"]["hero"]]
     slides_html = "".join(
         f'<div class="hero-slide{" active" if i==0 else ""}" style="background-image:url(\'{esc(u)}\')"></div>'
         for i, u in enumerate(hero_srcs))
@@ -533,6 +538,14 @@ os.makedirs(ASSETS); os.makedirs(PROP_DIR)
 open(os.path.join(SITE,"index.html"),"w").write(build_index())
 for name, rec in records.items():
     open(os.path.join(PROP_DIR, rec["slug"]+".html"),"w").write(build_property(rec))
+
+# owners lake-gate splash — standalone page (no site nav/footer), copied verbatim
+# from the source template. References ../assets/logo.png and
+# ../assets/hero/owners-firepit.jpg, both produced by the asset copies below.
+if os.path.exists(OWNERS_SRC):
+    owners_dir = os.path.join(SITE, "owners")
+    os.makedirs(owners_dir, exist_ok=True)
+    shutil.copy(OWNERS_SRC, os.path.join(owners_dir, "index.html"))
 
 # copy authored assets
 for fn in ("style.css","main.js"):

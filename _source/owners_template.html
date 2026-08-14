@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Basecamp Getaways — Owner Portal</title>
+<meta name="description" content="Choose your lake to continue to your Basecamp Getaways owner page." />
+<meta name="robots" content="noindex" />
+<style>
+  :root{
+    --navy-1:#0d2438;
+    --navy-2:#123350;
+    --navy-3:#1b4568;
+    --tan:#c8a76a;
+    --tan-dark:#b3915a;
+    --cream:#f6f1e7;
+    --cream-dim:#d9d1c2;
+    --keowee:#2f6f8f;   /* clearer blue-green lake */
+    --hartwell:#3a7d5c; /* deeper green lake */
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--cream);
+    background:radial-gradient(120% 120% at 50% 0%,#16405f 0%,var(--navy-2) 45%,var(--navy-1) 100%);
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px 20px calc(28px + env(safe-area-inset-bottom));
+    -webkit-font-smoothing:antialiased;
+  }
+  .card{
+    width:100%;
+    max-width:520px;
+    text-align:center;
+    animation:rise .5s ease both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+  /* Logo */
+  .logo{
+    display:block;
+    width:clamp(120px,34vw,150px);
+    height:auto;
+    margin:0 auto 30px;
+    filter:drop-shadow(0 6px 18px rgba(0,0,0,.35));
+  }
+
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--tan);
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:clamp(28px,7vw,40px);
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:-.01em;
+    margin-bottom:14px;
+  }
+  .lede{
+    font-size:16px;
+    line-height:1.5;
+    color:var(--cream-dim);
+    max-width:400px;
+    margin:0 auto 34px;
+  }
+
+  /* Buttons */
+  .choices{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .choice{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    text-align:left;
+    text-decoration:none;
+    color:var(--cream);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:16px;
+    padding:18px 20px;
+    transition:transform .12s ease,border-color .18s ease,background .18s ease;
+    -webkit-tap-highlight-color:transparent;
+    cursor:pointer;
+  }
+  .choice:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.28);}
+  .choice:active{transform:scale(.985);}
+  .choice:focus-visible{outline:3px solid var(--tan);outline-offset:2px;}
+  .choice .dot{
+    flex:0 0 auto;
+    width:46px;height:46px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.18);
+  }
+  .choice.hartwell .dot{background:var(--hartwell);}
+  .choice.keowee .dot{background:var(--keowee);}
+  .choice .dot svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;}
+  .choice .txt{flex:1 1 auto;}
+  .choice .lake{
+    display:block;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:.01em;
+  }
+  .choice .hint{
+    display:block;
+    font-size:13px;
+    color:var(--cream-dim);
+    margin-top:3px;
+  }
+  .choice .arrow{
+    flex:0 0 auto;
+    color:var(--tan);
+    font-size:22px;
+    line-height:1;
+    transition:transform .18s ease;
+  }
+  .choice:hover .arrow{transform:translateX(4px);}
+
+  /* Remember */
+  .remember{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    margin-top:24px;
+    font-size:13px;
+    color:var(--cream-dim);
+    cursor:pointer;
+    user-select:none;
+  }
+  .remember input{
+    width:17px;height:17px;
+    accent-color:var(--tan);
+    cursor:pointer;
+  }
+
+  footer{
+    margin-top:34px;
+    font-size:12px;
+    color:rgba(217,209,194,.6);
+    line-height:1.6;
+  }
+  footer a{color:inherit;text-decoration:none;}
+  footer a:hover{color:var(--tan);}
+
+  /* Return-visit banner */
+  .switch-note{
+    display:none;
+    margin-bottom:20px;
+    font-size:13px;
+    color:var(--cream-dim);
+    background:rgba(200,167,106,.12);
+    border:1px solid rgba(200,167,106,.35);
+    border-radius:12px;
+    padding:10px 14px;
+  }
+  .switch-note.show{display:block;}
+
+  /* Photo background */
+  .scene{position:fixed;inset:0;z-index:0;overflow:hidden;}
+  .scene-photo{
+    position:absolute;inset:0;
+    background-image:url("../assets/hero/owners-firepit.jpg");
+    background-size:cover;
+    background-position:13% 42%;
+    transform:scale(1.04);
+  }
+  .scene-scrim{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(9,26,41,.86) 0%, rgba(9,26,41,.62) 32%, rgba(9,24,38,.60) 60%, rgba(8,21,33,.90) 100%),
+      radial-gradient(115% 80% at 50% 40%, rgba(9,26,41,.20) 0%, rgba(9,24,38,.55) 70%, rgba(8,21,33,.78) 100%);
+  }
+  .card{position:relative;z-index:1;}
+</style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="scene-photo"></div>
+    <div class="scene-scrim"></div>
+  </div>
+  <main class="card">
+    <img class="logo" src="../assets/logo.png" alt="Basecamp Getaways" width="150" height="150" />
+
+    <div class="switch-note" id="switchNote"></div>
+
+    <p class="eyebrow">Welcome, Owner</p>
+    <h1>Where do you own?</h1>
+    <p class="lede">Tap your lake to continue to your owner page. It takes two seconds.</p>
+
+    <div class="choices">
+      <a class="choice hartwell" href="https://lakehartwellstays.com/owners" data-lake="hartwell" data-name="Lake Hartwell">
+        <span class="dot" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 15c1.5 1.2 3 1.2 4.5 0S10.5 13.8 12 15s3 1.2 4.5 0S19.5 13.8 21 15M3 19c1.5 1.2 3 1.2 4.5 0S10.5 17.8 12 19s3 1.2 4.5 0S19.5 17.8 21 19M12 4l3 4H9l3-4z"/></svg>
+        </span>
+        <span class="txt">
+          <span class="lake">Lake Hartwell</span>
+          <span class="hint">Owner home watch &amp; management</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="choice keowee" href="https://lakekeoweestays.com/owners" data-lake="keowee" data-name="Lake Keowee">
+        <span class="dot" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 15c1.5 1.2 3 1.2 4.5 0S10.5 13.8 12 15s3 1.2 4.5 0S19.5 13.8 21 15M3 19c1.5 1.2 3 1.2 4.5 0S10.5 17.8 12 19s3 1.2 4.5 0S19.5 17.8 21 19M12 4l3 4H9l3-4z"/></svg>
+        </span>
+        <span class="txt">
+          <span class="lake">Lake Keowee</span>
+          <span class="hint">Owner home watch &amp; management</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+    <label class="remember">
+      <input type="checkbox" id="rememberChoice" />
+      Remember my lake on this device
+    </label>
+
+    <footer>
+      Basecamp Getaways &middot; <a href="tel:+17069672392">706&#8209;967&#8209;2392</a><br />
+      Local, owner-first management on Lake Hartwell &amp; Lake Keowee
+    </footer>
+  </main>
+
+<script>
+(function(){
+  var KEY = "bcg_owner_lake";
+  var urls = {
+    hartwell: "https://lakehartwellstays.com/owners",
+    keowee:   "https://lakekeoweestays.com/owners"
+  };
+  var names = { hartwell: "Lake Hartwell", keowee: "Lake Keowee" };
+
+  // Allow forcing the chooser to show (e.g. shared link / wrong lake):
+  // append ?choose  or  #choose  to the URL to bypass any saved choice.
+  var params = (window.location.search + " " + window.location.hash).toLowerCase();
+  var forceChoose = /choose|switch|pick/.test(params);
+
+  function safeGet(){
+    try { return window.localStorage.getItem(KEY); } catch(e){ return null; }
+  }
+  function safeSet(v){
+    try { window.localStorage.setItem(KEY, v); } catch(e){}
+  }
+  function safeClear(){
+    try { window.localStorage.removeItem(KEY); } catch(e){}
+  }
+
+  var saved = safeGet();
+
+  // Return visit with a remembered lake -> send them straight there.
+  if (saved && urls[saved] && !forceChoose) {
+    window.location.replace(urls[saved]);
+    return;
+  }
+
+  // If they arrived here via ?choose but had a saved lake, offer a note.
+  if (saved && urls[saved] && forceChoose) {
+    var note = document.getElementById("switchNote");
+    if (note) {
+      note.innerHTML = 'You previously chose <strong>' + names[saved] +
+        '</strong>. Pick again below, or ' +
+        '<a href="' + urls[saved] + '" style="color:var(--tan);text-decoration:underline;">continue to ' +
+        names[saved] + '</a>.';
+      note.className = "switch-note show";
+    }
+  }
+
+  // Wire up the buttons: honor the remember checkbox, then navigate.
+  var remember = document.getElementById("rememberChoice");
+  var choices = document.querySelectorAll(".choice");
+  for (var i = 0; i < choices.length; i++) {
+    choices[i].addEventListener("click", function(e){
+      var lake = this.getAttribute("data-lake");
+      if (remember && remember.checked) {
+        safeSet(lake);
+      } else {
+        safeClear();
+      }
+      // Let the normal link navigation proceed to the href.
+    });
+  }
+})();
+</script>
+</body>
+</html>
