@@ -246,6 +246,28 @@
   var params = (window.location.search + " " + window.location.hash).toLowerCase();
   var forceChoose = /choose|switch|pick/.test(params);
 
+  // ---- UTM / attribution forwarding ----
+  // Carry marketing params (utm_source, utm_medium, utm_campaign, gclid,
+  // fbclid, etc.) from this gate through to whichever lake page the owner
+  // lands on, so attribution is never lost at the splash. Internal control
+  // params (choose/switch/pick and the v cache-buster) are NOT forwarded.
+  var CONTROL = { choose:1, "switch":1, pick:1, v:1 };
+  function forwardQuery(){
+    try {
+      var inn = new URLSearchParams(window.location.search);
+      var out = new URLSearchParams();
+      inn.forEach(function(val, key){
+        if (!CONTROL[key.toLowerCase()]) out.append(key, val);
+      });
+      return out.toString();
+    } catch(e){ return ""; }
+  }
+  function withParams(url){
+    var q = forwardQuery();
+    if (!q) return url;
+    return url + (url.indexOf("?") > -1 ? "&" : "?") + q;
+  }
+
   function safeGet(){
     try { return window.localStorage.getItem(KEY); } catch(e){ return null; }
   }
@@ -260,7 +282,7 @@
 
   // Return visit with a remembered lake -> send them straight there.
   if (saved && urls[saved] && !forceChoose) {
-    window.location.replace(urls[saved]);
+    window.location.replace(withParams(urls[saved]));
     return;
   }
 
@@ -270,7 +292,7 @@
     if (note) {
       note.innerHTML = 'You previously chose <strong>' + names[saved] +
         '</strong>. Pick again below, or ' +
-        '<a href="' + urls[saved] + '" style="color:var(--tan);text-decoration:underline;">continue to ' +
+        '<a href="' + withParams(urls[saved]) + '" style="color:var(--tan);text-decoration:underline;">continue to ' +
         names[saved] + '</a>.';
       note.className = "switch-note show";
     }
@@ -280,6 +302,9 @@
   var remember = document.getElementById("rememberChoice");
   var choices = document.querySelectorAll(".choice");
   for (var i = 0; i < choices.length; i++) {
+    // Forward attribution params onto the outbound link up front, so they carry
+    // even on middle-click / open-in-new-tab — not only on a plain left-click.
+    choices[i].setAttribute("href", withParams(choices[i].getAttribute("href")));
     choices[i].addEventListener("click", function(e){
       var lake = this.getAttribute("data-lake");
       if (remember && remember.checked) {
