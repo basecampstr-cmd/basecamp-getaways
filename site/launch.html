@@ -25,6 +25,35 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GCH2R80WZV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  (function () {
+    var q = new URLSearchParams(window.location.search);
+    /* GHL appends the form's market value when it redirects here after a
+       submission, so this page knows which campaign the lead came from. */
+    var market = (q.get("market") || q.get("m") || "").toLowerCase();
+    gtag('config', 'G-GCH2R80WZV', market ? { market: market } : {});
+
+    /* Reaching this page from the form IS the conversion — the offer page
+       hands off to it on submit. That makes this far more reliable than
+       trying to observe the submit inside a cross-origin iframe.
+       Guarded so someone opening /launch directly is not counted. */
+    var ref = document.referrer || "";
+    var cameFromForm = !!market || /leadconnector|basecampgetaways\.com\/offer/.test(ref);
+    if (cameFromForm) {
+      gtag('event', 'generate_lead', {
+        market: market || "unknown",
+        form_id: "lP9XJGVu2IMp36QBKlM6"
+      });
+    }
+  })();
+</script>
+
 <style>
 :root{
   --navy:#28404F;
