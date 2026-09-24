@@ -10,6 +10,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GCH2R80WZV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  /* Every event on this page carries the market tag from ?m=, so GA4 can be
+     segmented by campaign source (hartwell, keowee, ads, ...). */
+  (function () {
+    var m = (new URLSearchParams(window.location.search).get("m") || "direct").toLowerCase();
+    window.BCG_MARKET = m;
+    gtag('config', 'G-GCH2R80WZV', { market: m });
+  })();
+  /* Small helper so the rest of the page can fire events safely even if
+     gtag is blocked by an ad blocker. */
+  window.bcgTrack = function (name, params) {
+    try {
+      params = params || {};
+      params.market = window.BCG_MARKET || "direct";
+      gtag('event', name, params);
+    } catch (e) {}
+  };
+</script>
+
 <style>
 :root{
   --navy:#1B2E39; --cream:#FDFAF1; --sand:#F5EEDA;
@@ -574,8 +599,12 @@ footer a{color:var(--gold-lt)}
        var VIDEO_SRC = "/owner-intro.mp4";
    Leave it "" and the hero renders without a video.
    ----------------------------------------------------------- */
-var VIDEO_SRC    = "/assets/owner-intro.mp4";
-var VIDEO_POSTER = "/assets/owner-intro-poster.jpg";
+var VIDEO_SRC    = "/assets/owner-intro-v2.mp4";
+var VIDEO_POSTER = "/assets/owner-intro-poster-v2.jpg";
+/* If the edited cut isn't uploaded yet, fall back to the first version rather
+   than showing nothing. Remove once v2 is confirmed live. */
+var VIDEO_FALLBACK        = "/assets/owner-intro.mp4";
+var VIDEO_FALLBACK_POSTER = "/assets/owner-intro-poster.jpg";
 
 /* -----------------------------------------------------------
    MARKET TRACKING NUMBERS  (dynamic number insertion)
@@ -619,12 +648,91 @@ var PHONES = {
   s.src = VIDEO_SRC; s.type = "video/mp4";
   vid.appendChild(s); vid.load();
   wrap.hidden = false;
-  /* If the file isn't on the server yet, hide the slot rather than showing a
-     broken player. The rest of the page stands on its own. */
-  s.addEventListener("error", function(){ wrap.hidden = true; });
-  vid.addEventListener("error", function(){ wrap.hidden = true; });
+  /* If the file isn't on the server, try the fallback cut; if that fails too,
+     hide the slot rather than showing a broken player. */
+  var triedFallback = false;
+  function onSourceError() {
+    if (!triedFallback && VIDEO_FALLBACK) {
+      triedFallback = true;
+      s.src = VIDEO_FALLBACK;
+      if (VIDEO_FALLBACK_POSTER) vid.setAttribute("poster", VIDEO_FALLBACK_POSTER);
+      vid.load();
+      return;
+    }
+    wrap.hidden = true;
+  }
+  s.addEventListener("error", onSourceError);
+  vid.addEventListener("error", onSourceError);
   vid.addEventListener("ended", function(){ if (end) end.classList.add("show"); });
   vid.addEventListener("play",  function(){ if (end) end.classList.remove("show"); });
+
+  /* --- GA4 video tracking -------------------------------------------------
+     GA4's built-in video measurement only covers embedded YouTube, so a
+     self-hosted file needs these fired by hand. Each milestone fires once. */
+  var fired = {};
+  function mark(name, pct) {
+    if (fired[name]) return;
+    fired[name] = true;
+    window.bcgTrack(name, {
+      video_title: "owner-intro-v2",
+      video_percent: pct,
+      video_duration: Math.round(vid.duration || 0)
+    });
+  }
+  vid.addEventListener("play", function(){ mark("video_start", 0); });
+  vid.addEventListener("timeupdate", function () {
+    if (!vid.duration) return;
+    var p = (vid.currentTime / vid.duration) * 100;
+    if (p >= 25) mark("video_progress_25", 25);
+    if (p >= 50) mark("video_progress_50", 50);
+    if (p >= 75) mark("video_progress_75", 75);
+  });
+  vid.addEventListener("ended", function(){ mark("video_complete", 100); });
+})();
+
+/* --- CTA clicks ----------------------------------------------------------
+   Every button that sends someone to the form. Reliable proxy for intent
+   even before the form itself is submitted. */
+(function () {
+  [].forEach.call(document.querySelectorAll('a[href="#form"], a[href="#heroform"]'), function (a) {
+    a.addEventListener("click", function () {
+      window.bcgTrack("cta_click", {
+        cta_text: (a.innerText || "").trim().slice(0, 60),
+        cta_location: a.className.indexOf("sticky") > -1 ? "sticky_bar" : "page"
+      });
+    });
+  });
+})();
+
+/* --- Scroll depth --------------------------------------------------------
+   Tells you where people stop reading, and whether they ever reach the form. */
+(function () {
+  var hit = {}, marks = [25, 50, 75, 90];
+  function check() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if (h <= 0) return;
+    var pct = (window.scrollY / h) * 100;
+    marks.forEach(function (m) {
+      if (pct >= m && !hit[m]) { hit[m] = true; window.bcgTrack("scroll_depth", { percent: m }); }
+    });
+  }
+  window.addEventListener("scroll", check, { passive: true });
+  check();
+})();
+
+/* --- Form submission -----------------------------------------------------
+   The form lives in a cross-origin iframe, so its submit can't be observed
+   directly. GHL posts a message to the parent window when it completes; this
+   listens for that and ignores anything from another origin. */
+(function () {
+  window.addEventListener("message", function (e) {
+    if (!/leadconnector|basecampgetaways/.test(e.origin || "")) return;
+    var d = e.data;
+    var s = typeof d === "string" ? d : (d && (d.type || d.event || d.action) || "");
+    if (/submit|success|complete/i.test(String(s))) {
+      window.bcgTrack("generate_lead", { form_id: "lP9XJGVu2IMp36QBKlM6" });
+    }
+  }, false);
 })();
 /* Same idea for the lifestyle photos — drop any that 404 instead of leaving
    empty frames in the grid. */
