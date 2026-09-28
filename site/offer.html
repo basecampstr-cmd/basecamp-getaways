@@ -160,6 +160,7 @@ section{padding:60px 0}
 
 /* ---------------- results ---------------- */
 .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.proof.two{grid-template-columns:repeat(2,1fr);max-width:46rem;margin:0 auto 46px}
 .pf{background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden;
   display:flex;flex-direction:column}
 .pf .ph{aspect-ratio:16/10;overflow:hidden;background:#E5DECF;border-bottom:1px solid var(--line)}
@@ -178,6 +179,10 @@ section{padding:60px 0}
 .tm .ph{aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#E5DECF;
   border:1px solid var(--line);margin-bottom:14px}
 .tm .ph img{width:100%;height:100%;object-fit:cover}
+/* The two team photos are different shapes and neither is cropped for this
+   frame, so each gets its own framing. */
+.tm .ph img.faces{object-position:center 28%}
+.tm .ph img.group{transform:scale(1.8);transform-origin:44% 74%}
 .tm h3{font-size:1.24rem;margin-bottom:4px}
 .tm .role{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
   color:var(--gold-dk);margin-bottom:9px}
@@ -530,7 +535,7 @@ footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
 
     <div class="team" id="teamGrid">
       <div class="tm">
-        <div class="ph"><img src="/assets/team-david.jpg" alt="David Blackwell, Basecamp Getaways"></div>
+        <div class="ph"><img class="faces" src="/assets/DAvid%20photo.jpeg" alt="David Blackwell, Basecamp Getaways"></div>
         <h3>David Blackwell</h3>
         <div class="role">Operations</div>
         <p>Runs the homes day to day &mdash; crews, turnovers, maintenance, and the calls that come
@@ -538,7 +543,7 @@ footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
       </div>
 
       <div class="tm">
-        <div class="ph"><img src="/assets/team-joseph.jpg" alt="Joseph Kirton and family, Basecamp Getaways"></div>
+        <div class="ph"><img class="group" src="/assets/IMG_7150.JPG" alt="Joseph Kirton and family, Basecamp Getaways"></div>
         <h3>Joseph Kirton</h3>
         <div class="role">Founder</div>
         <p>Twenty-plus years in real estate. Builds every projection, and owns short-term rentals
@@ -653,6 +658,35 @@ footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
   </div>
 
   <div class="wrap">
+    <p class="eyebrow dark">Two more, two different situations</p>
+    <h2 class="sec-h">It isn&rsquo;t only lake houses.</h2>
+    <p class="sec-sub">One owner was underexposed. The other was doing it all himself.</p>
+
+    <div class="proof two">
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/2161510/oXzVCbjyZFiWWLuksKLWlxuuVcg5o5VxeBdeMJU7.jpg" alt="Watersedge on Lake Hartwell"></div>
+        <div class="b">
+          <div class="mk">Anderson &middot; Lake Hartwell</div>
+          <h3>Watersedge</h3>
+          <div class="num">On pace to <span class="ar">&rarr;</span> 2&times;</div>
+          <p class="cap">A good house almost nobody was seeing. New lifestyle photography, the
+            amenities we knew would book it, and listings across more channels &mdash; now on pace
+            to double its previous year.</p>
+        </div>
+      </div>
+
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/1273118/FikoZLrZ6pOhLaxTsgHnSKuk92ywfvssnmZkM4QW.jpg" alt="Whitsett Retreat, downtown Greenville"></div>
+        <div class="b">
+          <div class="mk">Greenville &middot; Downtown triplex</div>
+          <h3>Whitsett Retreat</h3>
+          <div class="num">Self-managed <span class="ar">&rarr;</span> +15%</div>
+          <p class="cap">The owner had been running all three units himself. After our fees came
+            out, his payouts were 15% higher than what he had been making on his own.</p>
+        </div>
+      </div>
+    </div>
+
     <p class="eyebrow dark">And from the guests in them</p>
     <h2 class="sec-h">What your guests would say.</h2>
     <p class="sec-sub">Every one of these is a five-star review of a home we manage.</p>
