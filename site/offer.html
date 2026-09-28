@@ -53,33 +53,23 @@ a{color:inherit}
 strong{font-weight:700;color:var(--navy)}
 img{max-width:100%;display:block}
 
-.topbar{background:var(--navy);padding:11px 0}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.tb-l{display:flex;align-items:center;gap:12px}
-.tb-l img{height:52px;width:auto}
-.tb-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;color:var(--cream);
-  font-weight:600;line-height:1.05}
-.tb-name em{font-style:normal;color:var(--gold);font-size:.55rem;letter-spacing:.24em;
-  text-transform:uppercase;display:block;margin-top:2px;font-family:'Inter',sans-serif;font-weight:700}
-.tb-ph{color:var(--cream);text-decoration:none;font-weight:700;font-size:.95rem;white-space:nowrap}
-.tb-ph:hover{color:var(--gold-lt)}
+/* ---------------- topbar: logo only, centered ---------------- */
+.topbar{background:var(--navy);padding:14px 0}
+.topbar .wrap{display:flex;align-items:center;justify-content:center}
+.topbar img{height:56px;width:auto}
 
 /* ---------------- hero ---------------- */
-.hero{background:var(--navy);color:var(--cream);padding:44px 0 56px;text-align:center;position:relative;overflow:hidden}
+.hero{background:var(--navy);color:var(--cream);padding:40px 0 52px;text-align:center;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:0;background:
   radial-gradient(ellipse 65% 55% at 50% 0%, rgba(201,166,61,.17), transparent 65%)}
 .hero .narrow{position:relative}
 .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:16px}
 .eyebrow.dark{color:var(--gold-dk);text-align:center}
-.stars{display:inline-flex;align-items:center;gap:10px;background:rgba(253,250,241,.08);
-  border:1px solid rgba(235,215,154,.3);border-radius:100px;padding:7px 18px;margin-bottom:20px;
-  font-size:.83rem;color:var(--gold-lt);font-weight:600}
-.stars .s{letter-spacing:2px;color:var(--gold)}
 .hero h1{font-size:clamp(2.3rem,5.8vw,3.8rem);color:var(--cream);margin-bottom:18px}
 .hero h1 .pay{color:var(--gold);white-space:nowrap}
 .hero h1 .free{display:block;font-size:.62em;margin-top:12px;color:var(--gold-lt);font-style:italic;font-weight:500}
-.hero .sub{font-size:1.1rem;color:rgba(253,250,241,.86);max-width:38rem;margin:0 auto 28px}
-.ledger{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:34rem;margin:0 auto 30px;
+.hero .sub{font-size:1.1rem;color:rgba(253,250,241,.86);max-width:34rem;margin:0 auto 30px}
+.ledger{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:34rem;margin:28px auto 0;
   border:1px solid rgba(235,215,154,.34);border-radius:10px;overflow:hidden;background:rgba(253,250,241,.05)}
 .ledger div{padding:16px 10px}
 .ledger div+div{border-left:1px solid rgba(235,215,154,.22)}
@@ -88,7 +78,7 @@ img{max-width:100%;display:block}
 .ledger .zero b{color:#7FD4A8}
 .ledger span{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
   color:rgba(253,250,241,.72);margin-top:8px;line-height:1.4}
-.vid{max-width:41rem;margin:0 auto 28px;border-radius:12px;overflow:hidden;
+.vid{max-width:41rem;margin:0 auto;border-radius:12px;overflow:hidden;
   box-shadow:0 22px 54px rgba(0,0,0,.42);background:#0d1b23;position:relative}
 .vid video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0d1b23}
 .vid-end{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
@@ -101,15 +91,8 @@ img{max-width:100%;display:block}
   box-shadow:0 6px 22px rgba(201,166,61,.34);transition:transform .12s,background .18s}
 .btn:hover{background:#D8B54B;transform:translateY(-2px)}
 .btn-lg{font-size:1.1rem;padding:22px 52px}
-.micro{font-size:.84rem;color:rgba(253,250,241,.7);margin-top:14px}
+.micro{font-size:.84rem;color:rgba(253,250,241,.7);margin-top:20px}
 .micro.dark{color:var(--muted)}
-
-/* ---------------- rating band ---------------- */
-.rating{background:var(--sand);border-bottom:1px solid var(--line);padding:36px 0;text-align:center}
-.rating .big{font-family:'Cormorant Garamond',Georgia,serif;font-size:3.3rem;font-weight:700;color:var(--navy);line-height:1}
-.rating .st{color:var(--gold);font-size:1.3rem;letter-spacing:4px;margin:6px 0 8px}
-.rating .lbl{font-size:.94rem;color:var(--muted)}
-.rating .lbl b{color:var(--navy)}
 
 section{padding:60px 0}
 .sec-h{text-align:center;margin-bottom:12px;font-size:clamp(1.85rem,4.2vw,2.7rem)}
@@ -150,11 +133,30 @@ section{padding:60px 0}
 .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .rev{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:26px;
   display:flex;flex-direction:column}
+.rev.wide{grid-column:1 / -1}
 .rev .st{color:var(--gold);letter-spacing:2px;font-size:.95rem;margin-bottom:12px}
 .rev p{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-style:italic;
   color:var(--ink);line-height:1.45}
+.rev.wide p{font-size:1.2rem}
 .rev .who{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
   margin-top:auto;padding-top:16px;font-weight:600}
+.gbadge{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  margin:0 auto 34px;max-width:40rem;background:var(--white);border:1px solid var(--line);
+  border-radius:12px;padding:16px 22px;text-align:center}
+.gbadge .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.1rem;font-weight:700;
+  color:var(--navy);line-height:1}
+.gbadge .s{color:var(--gold);letter-spacing:3px;font-size:1.05rem}
+.gbadge .t{font-size:.9rem;color:var(--muted)}
+.gbadge .t b{color:var(--navy)}
+.gbadge .div{width:1px;align-self:stretch;background:var(--line)}
+
+/* ---------------- rating band ---------------- */
+.rating{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:36px 0;text-align:center;margin-bottom:40px}
+.rating .big{font-family:'Cormorant Garamond',Georgia,serif;font-size:3.3rem;font-weight:700;color:var(--navy);line-height:1}
+.rating .st{color:var(--gold);font-size:1.3rem;letter-spacing:4px;margin:6px 0 8px}
+.rating .lbl{font-size:.94rem;color:var(--muted);max-width:40rem;margin:0 auto}
+.rating .lbl b{color:var(--navy)}
 
 /* ---------------- results ---------------- */
 .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -169,6 +171,17 @@ section{padding:60px 0}
   color:var(--navy);line-height:1.1;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .pf .num .ar{color:var(--gold)}
 .pf .cap{font-size:.88rem;color:var(--muted);margin-top:12px}
+
+/* ---------------- team ---------------- */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:56rem;margin:0 auto}
+.tm{text-align:center}
+.tm .ph{aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#E5DECF;
+  border:1px solid var(--line);margin-bottom:14px}
+.tm .ph img{width:100%;height:100%;object-fit:cover}
+.tm h3{font-size:1.24rem;margin-bottom:4px}
+.tm .role{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-dk);margin-bottom:9px}
+.tm p{font-size:.94rem;color:var(--muted)}
 
 /* ---------------- founder ---------------- */
 .founder{background:var(--navy);color:rgba(253,250,241,.9);text-align:center}
@@ -185,8 +198,28 @@ section{padding:60px 0}
 .step h3{font-size:1.2rem;margin-bottom:7px}
 .step p{font-size:.94rem;color:var(--muted)}
 
+/* ---------------- faq ---------------- */
+.faq{max-width:46rem;margin:0 auto}
+.faq details{background:var(--white);border:1px solid var(--line);border-radius:10px;
+  margin-bottom:12px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:20px 54px 20px 24px;position:relative;
+  font-weight:700;color:var(--navy);font-size:1.02rem;line-height:1.4}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  font-size:1.5rem;font-weight:400;color:var(--gold-dk);line-height:1}
+.faq details[open] summary:after{content:"\2013"}
+.faq .a{padding:0 24px 22px;font-size:.98rem;color:var(--body)}
+.faq .a p+p{margin-top:12px}
+
+/* ---------------- final cta ---------------- */
+.finalcta{background:var(--navy);color:var(--cream);text-align:center}
+.finalcta h2{color:var(--cream);font-size:clamp(1.9rem,4.4vw,2.8rem);margin-bottom:14px}
+.finalcta p.l{color:rgba(253,250,241,.85);max-width:34rem;margin:0 auto 30px}
+.finalcta .or{margin-top:22px;font-size:.98rem;color:rgba(253,250,241,.8)}
+.finalcta .or a{color:var(--gold-lt);font-weight:700;text-decoration:none;white-space:nowrap}
+
 /* ---------------- form ---------------- */
-.formsec{background:var(--sand);border-top:1px solid var(--line)}
+.formsec{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .formcard{background:var(--white);border-radius:14px;border-top:4px solid var(--gold);
   box-shadow:0 16px 44px rgba(27,46,57,.13);overflow:hidden;max-width:38rem;margin:0 auto}
 .formcard .fh{padding:26px 30px 20px;text-align:center;border-bottom:1px solid var(--line)}
@@ -199,10 +232,13 @@ section{padding:60px 0}
 .qualify{max-width:38rem;margin:26px auto 0;text-align:center;font-size:.88rem;color:var(--muted);line-height:1.6}
 .qualify b{color:var(--navy)}
 
-footer{background:var(--navy);color:rgba(253,250,241,.6);padding:34px 0;text-align:center;font-size:.86rem}
-footer img{height:64px;width:auto;margin:0 auto 14px}
-footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:9px}
-footer a{color:var(--gold-lt)}
+footer{background:var(--navy);color:rgba(253,250,241,.66);padding:44px 0 38px;text-align:center;font-size:.9rem}
+footer img{height:70px;width:auto;margin:0 auto 18px}
+footer .mission{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+  font-size:1.16rem;color:var(--cream);max-width:34rem;margin:0 auto 22px;line-height:1.45}
+footer .cx{display:flex;gap:10px 26px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer .cx a{color:var(--gold-lt);text-decoration:none;font-weight:700}
+footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
 
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--navy);
   border-top:2px solid var(--gold);display:flex;align-items:center;justify-content:center;gap:16px;
@@ -214,56 +250,45 @@ footer a{color:var(--gold-lt)}
 
 @media(max-width:820px){
   body{font-size:16px}
-  .hero{padding:32px 0 44px}
+  .hero{padding:30px 0 40px}
   section{padding:46px 0}
-  .hero .sub{font-size:1rem;margin-bottom:20px}
-  .ledger{grid-template-columns:1fr 1fr 1fr;max-width:23rem;margin-bottom:22px}
+  .hero .sub{font-size:1rem;margin-bottom:22px}
+  .ledger{grid-template-columns:1fr 1fr 1fr;max-width:23rem}
   .ledger div{padding:12px 4px}
   .ledger b{font-size:1.3rem}
   .ledger span{font-size:.56rem;letter-spacing:.07em;line-height:1.35}
-  .picks,.proof,.steps,.revs,.why{grid-template-columns:1fr}
+  .picks,.proof,.steps,.revs,.why,.team{grid-template-columns:1fr}
   .life{grid-template-columns:1fr}
   .btn{width:100%;padding:18px 20px}
   .sticky .btn{width:auto}
   .sticky .t{display:none}
   .formcard iframe{min-height:900px}
   .rating .big{font-size:2.7rem}
-  .tb-l img{height:38px}
-  .tb-name{display:none}
-  .tb-ph{font-size:1.02rem}
+  .topbar img{height:44px}
+  .gbadge{flex-direction:column;gap:8px}
+  .gbadge .div{display:none}
+  .tm .ph{max-width:20rem;margin:0 auto 14px}
 }
 </style>
 </head>
 <body>
 
+<!-- ======================= HEADER: logo only, centered ======================= -->
 <div class="topbar">
   <div class="wrap">
-    <div class="tb-l">
-      <img src="https://basecampgetaways.com/assets/logo.png" alt="Basecamp Getaways">
-      <div class="tb-name">Basecamp Getaways<em>Find Your Base</em></div>
-    </div>
-    <!-- Tracking number swaps by market via ?m= — see PHONES map at the bottom of this file -->
-    <a class="tb-ph" id="phTop" href="tel:8645813164">864-581-3164</a>
+    <img src="https://basecampgetaways.com/assets/logo.png" alt="Basecamp Getaways">
   </div>
 </div>
 
 <!-- ======================= HERO ======================= -->
 <div class="hero" id="top">
   <div class="narrow">
-    <div class="stars"><span class="s">★★★★★</span> 4.92 across 1,436 guest reviews</div>
 
     <h1>We&rsquo;ll put up to <span class="pay">$5,000</span> into your vacation rental.
       <span class="free">You don&rsquo;t pay a cent of it.</span></h1>
 
-    <p class="sub">We manage short-term rentals across the Southeast. Bring us your home and we
-      spend up to $5,000 of our own money getting it ready to earn &mdash; before you&rsquo;ve
-      paid us a dollar.</p>
-
-    <div class="ledger">
-      <div><b>$5,000</b><span>What we put in</span></div>
-      <div class="zero"><b>$0</b><span>What it costs you</span></div>
-      <div><b>2 days</b><span>To get your numbers</span></div>
-    </div>
+    <p class="sub">Bring us your home and we spend up to $5,000 of our own money getting it
+      ready to earn &mdash; before you&rsquo;ve paid us a dollar.</p>
 
     <!-- VIDEO SLOT — hidden until VIDEO_SRC is set at the bottom of this file -->
     <div class="vid" id="heroVideo" hidden>
@@ -274,22 +299,264 @@ footer a{color:var(--gold-lt)}
       </div>
     </div>
 
-    <a class="btn btn-lg" href="#form">Get My Free Projection &rarr;</a>
-    <p class="micro">Takes 60 seconds. No cost, no obligation, no pressure.</p>
+    <div class="ledger">
+      <div><b>$5,000</b><span>What we put in</span></div>
+      <div class="zero"><b>$0</b><span>What it costs you</span></div>
+      <div><b>2 days</b><span>To get your numbers</span></div>
+    </div>
+
+    <p class="micro">Your free projection is right below &mdash; it takes 60 seconds.</p>
   </div>
 </div>
 
-<div class="rating">
+<!-- ======================= FORM (moved up) ======================= -->
+<section class="formsec" id="form">
   <div class="wrap">
-    <div class="big">4.92</div>
-    <div class="st">★★★★★</div>
-    <p class="lbl"><b>1,436 guest reviews</b> across the homes we manage &mdash; because how a home
-      is run is what an owner is really buying.</p>
-  </div>
-</div>
+    <div class="formcard">
+      <div class="fh">
+        <h2>Get your free projection</h2>
+        <p>What your home should earn, plus your $5,000 package options.</p>
+      </div>
+      <div class="fb">
+        <iframe
+          src="https://link.basecampgetaways.com/widget/form/lP9XJGVu2IMp36QBKlM6"
+          style="width:100%;height:100%;border:none;border-radius:8px"
+          id="inline-lP9XJGVu2IMp36QBKlM6"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Basecamp Getaways Management  - Ads From-PCM"
+          data-height="undefined"
+          data-layout-iframe-id="inline-lP9XJGVu2IMp36QBKlM6"
+          data-form-id="lP9XJGVu2IMp36QBKlM6"
+          data-cookie-consent="true"
+          data-cookie-consent-provider="auto"
+          title="Free income projection request"></iframe>
+      </div>
+      <div class="ff">Your information stays with us. We don&rsquo;t sell or share owner data.</div>
+    </div>
 
-<!-- ======================= WHY US ======================= -->
+    <p class="qualify">Homes we project at <b>$85,000+</b> in annual booking revenue qualify for the
+      $5,000 package. Not sure whether yours does? That is exactly what the free projection tells
+      you &mdash; and it costs you nothing either way. Promotional value up to $5,000; terms apply.</p>
+  </div>
+</section>
+
+<!-- ======================= OWNER REVIEWS ======================= -->
 <section>
+  <div class="wrap">
+    <p class="eyebrow dark">From owners we work with</p>
+    <h2 class="sec-h">What they say.</h2>
+    <p class="sec-sub">Reviews from property owners, not guests.</p>
+
+    <div class="gbadge">
+      <div>
+        <div class="n">5.0</div>
+        <div class="s">★★★★★</div>
+      </div>
+      <div class="div"></div>
+      <div class="t"><b>28 Google reviews</b><br>Lake Hartwell Stays by Basecamp Getaways</div>
+    </div>
+
+    <div class="revs">
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Joseph and Erin have been essential on our STR journey. We couldn&rsquo;t do it
+          without them! From design to management, they do it all and do it well! I highly
+          recommend them!&rdquo;</p>
+        <div class="who">Candace Newman &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Absolutely stellar to work with! Their knowledge of the short term rental space
+          combined with their hospitality and kindness make them the best in the area!&rdquo;</p>
+        <div class="who">Punith Upadhya &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;It was a pleasure working with Basecamp for our new property. The team is
+          professional, knowledgeable and efficient. Can&rsquo;t wait to find another property, I
+          know who I&rsquo;ll be calling!&rdquo;</p>
+        <div class="who">Christopher Price &middot; Google review</div>
+      </div>
+
+      <div class="rev wide">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;I am a property owner who signed up with Basecamp to manage our short-term
+          rentals. It&rsquo;s clear that Joseph and his team know what they are doing. They were
+          extremely helpful in getting our lake house up to snuff, and within a month, he had our
+          property rated as a &lsquo;Guest Favorite&rsquo; on Airbnb. His guest-first policy
+          obviously works, because our guests have been raving about how much they enjoyed staying
+          at our place, and his attention to detail is amazing. Couldn&rsquo;t be happier.&rdquo;</p>
+        <div class="who">Erich Kimbrough &middot; Google review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= RESULTS ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow dark">Real homes, real numbers</p>
+    <h2 class="sec-h">What that looks like.</h2>
+    <p class="sec-sub">Three owners, three starting points, same local team.</p>
+
+    <div class="proof">
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/1715332/TFJYOwcc1liIEA3xnjeLbH1oIC4nMedsRuY3W0Ng.jpg" alt="Saluda River Basecamp"></div>
+        <div class="b">
+          <div class="mk">Greenville &middot; Saluda River</div>
+          <h3>Saluda River Basecamp</h3>
+          <div class="num">$85K <span class="ar">&rarr;</span> $110K</div>
+          <p class="cap">Beat its year-one projection by 29%. Now pacing $130K+ with $120K already
+            on the books.</p>
+        </div>
+      </div>
+
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/2080462/8gLe3QYzQdqXNJ0EpcbFFA2xlRa5iFoMIF3WuRuy.jpg" alt="Quittin' Time Cottage"></div>
+        <div class="b">
+          <div class="mk">Lake Hartwell</div>
+          <h3>Quittin&rsquo; Time Cottage</h3>
+          <div class="num">&lt;$35K <span class="ar">&rarr;</span> $100K+</div>
+          <p class="cap">Roughly 3x after we took over &mdash; renovation, hot tub over the water,
+            dock and private beach.</p>
+        </div>
+      </div>
+
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/1327820/y8mR8dvEwMlPTbQS5IwYhF2wYvZMyAIXYZ70zgS7.jpg" alt="Star Mountain"></div>
+        <div class="b">
+          <div class="mk">Blue Ridge, GA</div>
+          <h3>Star Mountain</h3>
+          <div class="num">35% fee <span class="ar">&rarr;</span> $96K</div>
+          <p class="cap">Left a manager charging 35%. New pricing, new photos, local staff &mdash;
+            $96K in 2025.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= THE OFFER ======================= -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow dark">The offer</p>
+    <h2 class="sec-h">Pick one. We pay for it.</h2>
+    <p class="sec-sub">Four ways to spend our $5,000 on your home. You choose the one that
+      actually helps your property &mdash; we cover it.</p>
+
+    <div class="picks">
+      <div class="pick">
+        <div class="wepay">We pick up the bill for</div>
+        <h3>Lawn &amp; property care</h3>
+        <p>You&rsquo;re almost certainly already paying someone to cut the grass. We take that bill
+          over &mdash; using our own vetted crews, on a turnover schedule built around guests, not
+          whenever they get to it. Same for hot tub deep-cleans and moving the dock as the lake
+          rises and falls.</p>
+        <div class="cap">Up to $5,000 &middot; our cost</div>
+      </div>
+
+      <div class="pick">
+        <div class="wepay">We back it with</div>
+        <h3>A revenue guarantee</h3>
+        <p>We agree on a revenue target before you sign. Miss it over your first 12 months and we
+          credit the shortfall back against your management fees. Our projection, our risk.</p>
+        <div class="cap">Up to $5,000 &middot; our cost</div>
+      </div>
+
+      <div class="pick">
+        <div class="wepay">We pay for</div>
+        <h3>A full property makeover</h3>
+        <p>Our exclusive photographer, a room-by-room redesign, and an amenity plan &mdash; so your
+          listing stops getting scrolled past.</p>
+        <div class="cap">Up to $5,000 &middot; our cost</div>
+      </div>
+
+      <div class="pick">
+        <div class="wepay">We reimburse</div>
+        <h3>An upgrade that pays you back</h3>
+        <p>Buy the hot tub, sauna, fire pit or game room. We reimburse you up to $5,000 out of
+          our side over your management term.</p>
+        <div class="cap">Up to $5,000 &middot; our cost</div>
+      </div>
+    </div>
+
+    <p class="howwe">We only make money when your home books &mdash; <b>we earn a percentage of what
+      it actually earns</b>, nothing up front. That&rsquo;s why we&rsquo;re willing to put $5,000 in first.
+      A home that earns more pays us more, so we&rsquo;re spending our own money on the things that
+      move your number.</p>
+  </div>
+</section>
+
+<!-- ======================= HOW IT WORKS ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow dark">How it works</p>
+    <h2 class="sec-h">Three steps. Nothing signed until you&rsquo;ve seen real numbers.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Tell us about your home</h3>
+        <p>Sixty seconds on the form. Address, bedrooms, and how you use it.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>We send your projection</h3>
+        <p>Inside two business days you get real numbers for your property and your market &mdash; free.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>You pick your $5,000</h3>
+        <p>We give you an honest assessment of your home and whether Basecamp is a good fit. If it
+          is, you choose which package we pay for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= MEET THE TEAM ======================= -->
+<section id="team">
+  <div class="wrap">
+    <p class="eyebrow dark">Meet the team</p>
+    <h2 class="sec-h">The people who will actually run your home.</h2>
+    <p class="sec-sub">Not a call center. A small local team you will know by name.</p>
+
+    <div class="team" id="teamGrid">
+      <div class="tm">
+        <div class="ph"><img src="/assets/team-joseph.jpg" alt="Joseph, Basecamp Getaways"></div>
+        <h3>Joseph</h3>
+        <div class="role">Founder</div>
+        <p>Twenty-plus years in real estate. Builds every projection, and owns short-term rentals
+          of his own.</p>
+      </div>
+
+      <div class="tm">
+        <div class="ph"><img src="/assets/team-erin.jpg" alt="Erin, Basecamp Getaways"></div>
+        <h3>Erin</h3>
+        <div class="role">Design &amp; guest experience</div>
+        <p>Designs the homes and looks after the guests &mdash; the reason so many reviews mention
+          her by name.</p>
+      </div>
+
+      <div class="tm">
+        <div class="ph"><img src="/assets/team-family.jpg" alt="The Basecamp Getaways family"></div>
+        <h3>The family</h3>
+        <div class="role">Boots on the ground</div>
+        <p>Local crews we know personally, on call for the freeze warning and the 11pm lost key.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= WHY (differentiators) ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
   <div class="wrap">
     <p class="eyebrow dark">Why owners move to us</p>
     <h2 class="sec-h">We are not a call center with a spreadsheet.</h2>
@@ -342,7 +609,6 @@ footer a{color:var(--gold-lt)}
         </div>
         <p class="lifecap">Real guests, real stays &mdash; shot by our photographer at homes we manage.</p>
       </div>
-      </div>
 
       <div class="card wide">
         <div class="k">Direct booking</div>
@@ -373,135 +639,6 @@ footer a{color:var(--gold-lt)}
   </div>
 </section>
 
-<!-- ======================= THE OFFER ======================= -->
-<section style="background:var(--white);border-top:1px solid var(--line)">
-  <div class="wrap">
-    <p class="eyebrow dark">The offer</p>
-    <h2 class="sec-h">Pick one. We pay for it.</h2>
-    <p class="sec-sub">Four ways to spend our $5,000 on your home. You choose the one that
-      actually helps your property &mdash; we cover it.</p>
-
-    <div class="picks">
-      <div class="pick">
-        <div class="wepay">We pick up the bill for</div>
-        <h3>Lawn &amp; property care</h3>
-        <p>You&rsquo;re almost certainly already paying someone to cut the grass. We take that bill
-          over &mdash; using our own vetted crews, on a turnover schedule built around guests, not
-          whenever they get to it. Same for hot tub deep-cleans and moving the dock as the lake
-          rises and falls.</p>
-        <div class="cap">Up to $5,000 &middot; our cost</div>
-      </div>
-
-      <div class="pick">
-        <div class="wepay">We back it with</div>
-        <h3>A revenue guarantee</h3>
-        <p>We agree on a revenue target before you sign. Miss it over your first 12 months and we
-          credit the shortfall back against your management fees. Our projection, our risk.</p>
-        <div class="cap">Up to $5,000 &middot; our cost</div>
-      </div>
-
-      <div class="pick">
-        <div class="wepay">We pay for</div>
-        <h3>A full property makeover</h3>
-        <p>Our exclusive photographer, a room-by-room redesign, and an amenity plan &mdash; so your
-          listing stops getting scrolled past.</p>
-        <div class="cap">Up to $5,000 &middot; our cost</div>
-      </div>
-
-      <div class="pick">
-        <div class="wepay">We reimburse</div>
-        <h3>An upgrade that pays you back</h3>
-        <p>Buy the hot tub, sauna, fire pit or game room. We reimburse you up to $5,000 out of
-          our side over your management term.</p>
-        <div class="cap">Up to $5,000 &middot; our cost</div>
-      </div>
-    </div>
-
-    <p class="howwe">We only make money when your home books &mdash; <b>we earn a percentage of what
-      it actually earns</b>, nothing up front. That&rsquo;s why we&rsquo;re willing to put $5,000 in first.
-      A home that earns more pays us more, so we&rsquo;re spending our own money on the things that
-      move your number.</p>
-  </div>
-</section>
-
-<!-- ======================= OWNER REVIEWS (all real, from Google) ======================= -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow dark">From owners we work with</p>
-    <h2 class="sec-h">What they say.</h2>
-    <p class="sec-sub">Reviews from property owners, not guests.</p>
-
-    <div class="revs">
-      <div class="rev">
-        <div class="st">★★★★★</div>
-        <p>&ldquo;Joseph and Erin have been essential on our STR journey. We couldn&rsquo;t do it
-          without them! From design to management, they do it all and do it well! I highly
-          recommend them!&rdquo;</p>
-        <div class="who">Candace Newman &middot; Google review</div>
-      </div>
-
-      <div class="rev">
-        <div class="st">★★★★★</div>
-        <p>&ldquo;Absolutely stellar to work with! Their knowledge of the short term rental space
-          combined with their hospitality and kindness make them the best in the area!&rdquo;</p>
-        <div class="who">Punith Upadhya &middot; Google review</div>
-      </div>
-
-      <div class="rev">
-        <div class="st">★★★★★</div>
-        <p>&ldquo;It was a pleasure working with Basecamp for our new property. The team is
-          professional, knowledgeable and efficient. Can&rsquo;t wait to find another property, I
-          know who I&rsquo;ll be calling!&rdquo;</p>
-        <div class="who">Christopher Price &middot; Google review</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= RESULTS ======================= -->
-<section style="background:var(--white);border-top:1px solid var(--line)">
-  <div class="wrap">
-    <p class="eyebrow dark">Real homes, real numbers</p>
-    <h2 class="sec-h">What that looks like.</h2>
-    <p class="sec-sub">Three owners, three starting points, same local team.</p>
-
-    <div class="proof">
-      <div class="pf">
-        <div class="ph"><img src="https://assets.hospitable.com/property_images/1715332/TFJYOwcc1liIEA3xnjeLbH1oIC4nMedsRuY3W0Ng.jpg" alt="Saluda River Basecamp"></div>
-        <div class="b">
-          <div class="mk">Greenville &middot; Saluda River</div>
-          <h3>Saluda River Basecamp</h3>
-          <div class="num">$85K <span class="ar">&rarr;</span> $110K</div>
-          <p class="cap">Beat its year-one projection by 29%. Now pacing $130K+ with $120K already
-            on the books.</p>
-        </div>
-      </div>
-
-      <div class="pf">
-        <div class="ph"><img src="https://assets.hospitable.com/property_images/2080462/8gLe3QYzQdqXNJ0EpcbFFA2xlRa5iFoMIF3WuRuy.jpg" alt="Quittin' Time Cottage"></div>
-        <div class="b">
-          <div class="mk">Lake Hartwell</div>
-          <h3>Quittin&rsquo; Time Cottage</h3>
-          <div class="num">&lt;$35K <span class="ar">&rarr;</span> $100K+</div>
-          <p class="cap">Roughly 3x after we took over &mdash; renovation, hot tub over the water,
-            dock and private beach.</p>
-        </div>
-      </div>
-
-      <div class="pf">
-        <div class="ph"><img src="https://assets.hospitable.com/property_images/1327820/y8mR8dvEwMlPTbQS5IwYhF2wYvZMyAIXYZ70zgS7.jpg" alt="Star Mountain"></div>
-        <div class="b">
-          <div class="mk">Blue Ridge, GA</div>
-          <h3>Star Mountain</h3>
-          <div class="num">35% fee <span class="ar">&rarr;</span> $96K</div>
-          <p class="cap">Left a manager charging 35%. New pricing, new photos, local staff &mdash;
-            $96K in 2025.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ======================= FOUNDER ======================= -->
 <section class="founder">
   <div class="wrap">
@@ -511,77 +648,169 @@ footer a{color:var(--gold-lt)}
   </div>
 </section>
 
-<!-- ======================= HOW IT WORKS ======================= -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow dark">How it works</p>
-    <h2 class="sec-h">Three steps. Nothing signed until you&rsquo;ve seen real numbers.</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="n">1</div>
-        <h3>Tell us about your home</h3>
-        <p>Sixty seconds on the form below. Address, bedrooms, and how you use it.</p>
-      </div>
-      <div class="step">
-        <div class="n">2</div>
-        <h3>We send your projection</h3>
-        <p>Inside two business days you get real numbers for your property and your market &mdash; free.</p>
-      </div>
-      <div class="step">
-        <div class="n">3</div>
-        <h3>You pick your $5,000</h3>
-        <p>We give you an honest assessment of your home and whether Basecamp is a good fit. If it
-          is, you choose which package we pay for.</p>
-      </div>
+<!-- ======================= GUEST PROOF ======================= -->
+<section style="padding-top:0">
+  <div class="rating">
+    <div class="wrap">
+      <div class="big">4.92</div>
+      <div class="st">★★★★★</div>
+      <p class="lbl"><b>1,436 guest reviews</b> across the homes we manage &mdash; because how a home
+        is run is what an owner is really buying.</p>
     </div>
-    <div style="text-align:center;margin-top:44px">
-      <a class="btn btn-lg" href="#form">Get My Free Projection &rarr;</a>
-      <p class="micro dark">No cost, no obligation.</p>
+  </div>
+
+  <div class="wrap">
+    <p class="eyebrow dark">And from the guests in them</p>
+    <h2 class="sec-h">What your guests would say.</h2>
+    <p class="sec-sub">Every one of these is a five-star review of a home we manage.</p>
+
+    <div class="revs">
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Great vacation on Lake Hartwell. House was exactly as advertised, if not better,
+          and our entire family enjoyed our time there.&rdquo;</p>
+        <div class="who">Carl Jones &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Great house on Lake Hartwell! House had everything you need with lots of awesome
+          extras for all ages. Would love to stay again soon.&rdquo;</p>
+        <div class="who">Heidi Humphries &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;I truly enjoyed everything about this experience! Whether it be the home or the
+          ease of communication with the host!&rdquo;</p>
+        <div class="who">William Skelton &middot; Google review</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= FORM ======================= -->
-<section class="formsec" id="form">
+<!-- ======================= FAQ ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
   <div class="wrap">
-    <div class="formcard">
-      <div class="fh">
-        <h2>Get your free projection</h2>
-        <p>What your home should earn, plus your $5,000 package options.</p>
-      </div>
-      <div class="fb">
-        <iframe
-          src="https://link.basecampgetaways.com/widget/form/lP9XJGVu2IMp36QBKlM6"
-          style="width:100%;height:100%;border:none;border-radius:8px"
-          id="inline-lP9XJGVu2IMp36QBKlM6"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Basecamp Getaways Management  - Ads From-PCM"
-          data-height="undefined"
-          data-layout-iframe-id="inline-lP9XJGVu2IMp36QBKlM6"
-          data-form-id="lP9XJGVu2IMp36QBKlM6"
-          data-cookie-consent="true"
-          data-cookie-consent-provider="auto"
-          title="Free income projection request"></iframe>
-      </div>
-      <div class="ff">Your information stays with us. We don&rsquo;t sell or share owner data.</div>
-    </div>
+    <p class="eyebrow dark">Questions owners ask</p>
+    <h2 class="sec-h">The honest answers.</h2>
+    <p class="sec-sub">If yours isn&rsquo;t here, call us &mdash; the number is at the bottom of this page.</p>
 
-    <p class="qualify">Homes we project at <b>$85,000+</b> in annual booking revenue qualify for the
-      $5,000 package. Not sure whether yours does? That is exactly what the free projection tells
-      you &mdash; and it costs you nothing either way. Promotional value up to $5,000; terms apply.</p>
+    <div class="faq" id="faq">
+
+      <details>
+        <summary>What&rsquo;s the catch on the $5,000?</summary>
+        <div class="a">
+          <p>There isn&rsquo;t a hidden one, but there is a reason. We only make money when your
+            home books &mdash; we take a percentage of what it actually earns, nothing up front. A
+            home that earns more pays us more, so spending our own money to get yours earning is
+            simply the fastest way we get paid.</p>
+          <p>The real condition is the one we state openly: homes we project at $85,000+ in annual
+            booking revenue qualify for the package. The free projection tells you whether yours
+            does, and costs you nothing either way.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What do you charge?</summary>
+        <div class="a">
+          <p>A percentage of what your home actually earns &mdash; no setup fee, no monthly
+            retainer, nothing before your first booking. We&rsquo;ll give you the exact number with
+            your projection, because the right percentage depends on your home and your market.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Am I locked into a long contract?</summary>
+        <div class="a">
+          <p>No multi-year lock-up. We&rsquo;d rather keep your home by earning it every month. The
+            only commitment tied to the $5,000 is a management term long enough for us to earn it
+            back &mdash; we&rsquo;ll put that in writing before you sign anything.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I still use my own house?</summary>
+        <div class="a">
+          <p>Yes. It&rsquo;s your home. Block the weeks you want on the calendar and we work around
+            them. We&rsquo;ll be honest with you about which weeks are expensive to hold so you can
+            decide with real numbers in front of you.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I already have a manager. Is switching a headache?</summary>
+        <div class="a">
+          <p>It&rsquo;s the most common move we make, and we handle it. We take over the listings,
+            keep existing reservations intact so no guest gets disrupted, re-shoot the home, reset
+            pricing, and put local staff on it. Star Mountain came to us from a manager charging
+            35% and did $96K the following year.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I self-manage on Airbnb. Why hand it over?</summary>
+        <div class="a">
+          <p>Usually for two reasons: the 11pm calls, and the ceiling. We run pricing daily, market
+            directly to every guest who has ever stayed with us, and list your home on our own
+            market booking sites where the reservation is commission-free. Most owners who switch
+            aren&rsquo;t just buying their evenings back &mdash; they end up above what they were
+            doing alone.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Who handles cleaning, maintenance and the 2am problem?</summary>
+        <div class="a">
+          <p>We do. Vetted local crews on a turnover schedule built around guests, our own people
+            for maintenance, and a real person answering the phone when something goes wrong at an
+            unreasonable hour. You find out afterwards, in a message that says it&rsquo;s already
+            handled.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Which markets do you cover?</summary>
+        <div class="a">
+          <p>Lake Hartwell, Lake Keowee, Lake Murray, Blue Ridge GA, Edisto and the Greenville area.
+            If your home is near one of those, we&rsquo;re local to it.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What happens after I submit the form?</summary>
+        <div class="a">
+          <p>Within two business days you get a real projection for your property and your market.
+            Then an honest conversation about whether Basecamp is a good fit &mdash; including when
+            we think it isn&rsquo;t. If it is, you pick which $5,000 package we pay for. No cost,
+            no obligation, no pressure at any point.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FINAL CTA ======================= -->
+<section class="finalcta">
+  <div class="narrow">
+    <h2>Find out what your home could earn.</h2>
+    <p class="l">A real projection for your property and your market, back in two business days.
+      Free, and yours to keep whatever you decide.</p>
+    <a class="btn btn-lg" href="#form">Get My Free Projection &rarr;</a>
+    <p class="or">Or just call us &mdash; <a class="phLink" href="tel:8645813164">864-581-3164</a></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <img src="https://basecampgetaways.com/assets/logo.png" alt="Basecamp Getaways">
-    <div>Basecamp Getaways &middot; <a class="phLink" href="tel:8645813164">864-581-3164</a></div>
+    <p class="mission">We help owners turn a second home into a business that runs without them
+      &mdash; and give every guest a base worth coming back to.</p>
+    <div class="cx">
+      <a class="phLink" href="tel:8645813164">864-581-3164</a>
+      <a href="mailto:joseph@basecampgetaways.com">joseph@basecampgetaways.com</a>
+    </div>
     <div class="mk">Lake Hartwell &middot; Lake Keowee &middot; Lake Murray &middot; Blue Ridge &middot; Edisto &middot; Greenville</div>
   </div>
 </footer>
@@ -595,23 +824,19 @@ footer a{color:var(--gold-lt)}
 <script>
 /* -----------------------------------------------------------
    OWNER INTRO VIDEO
-   Drop your file in the site and set the path, e.g.
-       var VIDEO_SRC = "/owner-intro.mp4";
-   Leave it "" and the hero renders without a video.
    ----------------------------------------------------------- */
 var VIDEO_SRC    = "/assets/owner-intro-v2.mp4";
 var VIDEO_POSTER = "/assets/owner-intro-poster.jpg";
 /* If the edited cut isn't uploaded yet, fall back to the first version rather
-   than showing nothing. Remove once v2 is confirmed live. */
+   than showing nothing. */
 var VIDEO_FALLBACK        = "/assets/owner-intro.mp4";
 var VIDEO_FALLBACK_POSTER = "/assets/owner-intro-poster.jpg";
 
 /* -----------------------------------------------------------
    MARKET TRACKING NUMBERS  (dynamic number insertion)
    Mailer redirects land here as /offer?m=hartwell etc.
-   Fill in the PostcardMania tracking number for each market.
-   Anything not listed — PCM digital ads, email, SMS, direct —
-   falls through to DEFAULT.
+   The number now appears only in the final CTA and the footer —
+   both carry class="phLink" and both swap by market.
    ----------------------------------------------------------- */
 var DEFAULT_PHONE = "864-581-3164";
 var PHONES = {
@@ -626,8 +851,6 @@ var PHONES = {
   var m = (new URLSearchParams(window.location.search).get("m") || "").toLowerCase();
   var num = (PHONES[m] && PHONES[m].trim()) || DEFAULT_PHONE;
   var tel = "tel:" + num.replace(/[^0-9+]/g, "");
-  var top = document.getElementById("phTop");
-  if (top) { top.textContent = num; top.href = tel; }
   [].forEach.call(document.querySelectorAll(".phLink"), function (a) {
     a.textContent = num; a.href = tel;
   });
@@ -648,8 +871,6 @@ var PHONES = {
   s.src = VIDEO_SRC; s.type = "video/mp4";
   vid.appendChild(s); vid.load();
   wrap.hidden = false;
-  /* If the file isn't on the server, try the fallback cut; if that fails too,
-     hide the slot rather than showing a broken player. */
   var triedFallback = false;
   function onSourceError() {
     if (!triedFallback && VIDEO_FALLBACK) {
@@ -666,9 +887,7 @@ var PHONES = {
   vid.addEventListener("ended", function(){ if (end) end.classList.add("show"); });
   vid.addEventListener("play",  function(){ if (end) end.classList.remove("show"); });
 
-  /* --- GA4 video tracking -------------------------------------------------
-     GA4's built-in video measurement only covers embedded YouTube, so a
-     self-hosted file needs these fired by hand. Each milestone fires once. */
+  /* --- GA4 video tracking --- */
   var fired = {};
   function mark(name, pct) {
     if (fired[name]) return;
@@ -690,11 +909,9 @@ var PHONES = {
   vid.addEventListener("ended", function(){ mark("video_complete", 100); });
 })();
 
-/* --- CTA clicks ----------------------------------------------------------
-   Every button that sends someone to the form. Reliable proxy for intent
-   even before the form itself is submitted. */
+/* --- CTA clicks --- */
 (function () {
-  [].forEach.call(document.querySelectorAll('a[href="#form"], a[href="#heroform"]'), function (a) {
+  [].forEach.call(document.querySelectorAll('a[href="#form"]'), function (a) {
     a.addEventListener("click", function () {
       window.bcgTrack("cta_click", {
         cta_text: (a.innerText || "").trim().slice(0, 60),
@@ -702,10 +919,26 @@ var PHONES = {
       });
     });
   });
+  /* phone taps — the number only appears twice now, so both are worth counting */
+  [].forEach.call(document.querySelectorAll('a.phLink'), function (a) {
+    a.addEventListener("click", function () {
+      window.bcgTrack("phone_click", { phone_number: a.textContent.trim() });
+    });
+  });
 })();
 
-/* --- Scroll depth --------------------------------------------------------
-   Tells you where people stop reading, and whether they ever reach the form. */
+/* --- FAQ opens --- */
+(function () {
+  [].forEach.call(document.querySelectorAll('#faq details'), function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      var q = d.querySelector("summary");
+      window.bcgTrack("faq_open", { question: q ? q.textContent.trim().slice(0, 80) : "" });
+    });
+  });
+})();
+
+/* --- Scroll depth --- */
 (function () {
   var hit = {}, marks = [25, 50, 75, 90];
   function check() {
@@ -720,10 +953,7 @@ var PHONES = {
   check();
 })();
 
-/* --- Form submission -----------------------------------------------------
-   The form lives in a cross-origin iframe, so its submit can't be observed
-   directly. GHL posts a message to the parent window when it completes; this
-   listens for that and ignores anything from another origin. */
+/* --- Form submission (belt and braces; launch.html also fires generate_lead) --- */
 (function () {
   window.addEventListener("message", function (e) {
     if (!/leadconnector|basecampgetaways/.test(e.origin || "")) return;
@@ -734,8 +964,8 @@ var PHONES = {
     }
   }, false);
 })();
-/* Same idea for the lifestyle photos — drop any that 404 instead of leaving
-   empty frames in the grid. */
+
+/* Drop lifestyle photos that 404 instead of leaving empty frames. */
 (function () {
   [].forEach.call(document.querySelectorAll(".life img"), function (img) {
     img.addEventListener("error", function () {
@@ -748,6 +978,25 @@ var PHONES = {
         if (cap && cap.className === "lifecap") cap.style.display = "none";
       }
     });
+  });
+})();
+
+/* Same for team photos — until the real family photos are uploaded, a missing
+   file removes that card rather than leaving a grey box. If none load, the
+   whole section is hidden. */
+(function () {
+  function drop(img) {
+    var card = img.closest(".tm"), grid = document.getElementById("teamGrid");
+    if (card && card.parentNode) card.parentNode.removeChild(card);
+    if (grid && !grid.querySelector("img")) {
+      var sec = document.getElementById("team");
+      if (sec) sec.style.display = "none";
+    }
+  }
+  [].forEach.call(document.querySelectorAll("#teamGrid img"), function (img) {
+    img.addEventListener("error", function () { drop(img); });
+    /* catch files that already failed before this script ran */
+    if (img.complete && img.naturalWidth === 0) drop(img);
   });
 })();
 </script>
