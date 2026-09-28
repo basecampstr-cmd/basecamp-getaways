@@ -930,7 +930,10 @@ var PHONES = {
   }
   s.addEventListener("error", onSourceError);
   vid.addEventListener("error", onSourceError);
-  vid.addEventListener("ended", function(){ if (end) end.classList.add("show"); });
+  /* Only show the end card after a real, unmuted watch. While the silent
+     preview is looping it would sit on top of the unmute overlay and trap
+     the viewer with no way to turn the sound on. */
+  vid.addEventListener("ended", function(){ if (end && !vid.muted) end.classList.add("show"); });
   vid.addEventListener("play",  function(){ if (end) end.classList.remove("show"); });
 
   /* --- GA4 video tracking ---------------------------------------------------
@@ -968,6 +971,7 @@ var PHONES = {
 
   vid.muted = true;
   vid.setAttribute("muted", "");
+  vid.loop = true;          /* silent preview loops until someone unmutes */
 
   function autoplayBlocked() {
     /* Autoplay refused (some mobile data-saver and battery-saver modes).
@@ -990,6 +994,7 @@ var PHONES = {
     if (end) end.classList.remove("show");
     vid.muted = false;
     vid.removeAttribute("muted");
+    vid.loop = false;
     vid.currentTime = 0;
     var r = vid.play();
     if (r && typeof r.catch === "function") r.catch(function () {});
