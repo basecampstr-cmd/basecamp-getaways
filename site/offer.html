@@ -85,6 +85,19 @@ img{max-width:100%;display:block}
   gap:16px;background:rgba(17,37,48,.92);padding:24px}
 .vid-end.show{display:flex}
 .vid-end p{font-size:1.1rem;color:#fff;font-weight:600;max-width:24ch}
+/* Muted-autoplay overlay. Sits above the video until the viewer clicks to
+   unmute, which restarts playback from zero with sound. */
+.vid-cta{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:16px;text-align:center;padding:22px;cursor:pointer;
+  background:rgba(21,61,99,.46);transition:opacity .25s ease}
+.vid-cta.hide{opacity:0;pointer-events:none}
+.vid-cta .l1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;color:#fff;
+  font-size:clamp(1.35rem,3.6vw,2rem);line-height:1.12;text-shadow:0 2px 16px rgba(0,0,0,.45)}
+.vid-cta .l2{display:inline-flex;align-items:center;gap:9px;background:var(--cream);
+  color:var(--navy);font-weight:800;font-size:.92rem;padding:12px 24px;border-radius:100px;
+  box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.vid-cta .l2 svg{width:17px;height:17px;flex:none}
+.vid-cta:hover .l2{background:#fff}
 
 .btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;
   font-size:1.02rem;text-decoration:none;padding:19px 42px;border-radius:8px;
@@ -297,7 +310,13 @@ footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
 
     <!-- VIDEO SLOT — hidden until VIDEO_SRC is set at the bottom of this file -->
     <div class="vid" id="heroVideo" hidden>
-      <video id="ownerVideo" controls preload="metadata" playsinline></video>
+      <video id="ownerVideo" controls muted autoplay playsinline preload="auto"></video>
+      <div class="vid-cta" id="vidCta" role="button" tabindex="0"
+           aria-label="Unmute and restart the video">
+        <div class="l1" id="vidCtaLine">Your video is playing</div>
+        <div class="l2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg><span id="vidCtaBtn">Click to unmute</span></div>
+      </div>
       <div class="vid-end" id="vidEnd">
         <p>Find out what your home could earn.</p>
         <a class="btn" href="#form">Get my free projection &rarr;</a>
@@ -914,7 +933,10 @@ var PHONES = {
   vid.addEventListener("ended", function(){ if (end) end.classList.add("show"); });
   vid.addEventListener("play",  function(){ if (end) end.classList.remove("show"); });
 
-  /* --- GA4 video tracking --- */
+  /* --- GA4 video tracking ---------------------------------------------------
+     Milestones are measured from the UNMUTED restart, not from the muted
+     autoplay, so video_start still means "someone chose to watch this".
+     The muted autoplay is reported separately as video_autoplay. */
   var fired = {};
   function mark(name, pct) {
     if (fired[name]) return;
@@ -925,15 +947,62 @@ var PHONES = {
       video_duration: Math.round(vid.duration || 0)
     });
   }
-  vid.addEventListener("play", function(){ mark("video_start", 0); });
   vid.addEventListener("timeupdate", function () {
-    if (!vid.duration) return;
+    if (!vid.duration || vid.muted) return;
     var p = (vid.currentTime / vid.duration) * 100;
     if (p >= 25) mark("video_progress_25", 25);
     if (p >= 50) mark("video_progress_50", 50);
     if (p >= 75) mark("video_progress_75", 75);
   });
-  vid.addEventListener("ended", function(){ mark("video_complete", 100); });
+  vid.addEventListener("ended", function(){ if (!vid.muted) mark("video_complete", 100); });
+
+  /* --- Muted autoplay + click-to-unmute ------------------------------------
+     Browsers only allow autoplay when the video is muted, so it starts muted
+     with an overlay saying so. Clicking the overlay unmutes and restarts from
+     zero, which is the whole point — nobody should join Joseph's pitch
+     halfway through with the sound suddenly on. */
+  var cta  = document.getElementById("vidCta"),
+      line = document.getElementById("vidCtaLine"),
+      btn  = document.getElementById("vidCtaBtn"),
+      unmuted = false;
+
+  vid.muted = true;
+  vid.setAttribute("muted", "");
+
+  function autoplayBlocked() {
+    /* Autoplay refused (some mobile data-saver and battery-saver modes).
+       Fall back to a plain play prompt rather than lying about what's on. */
+    if (line) line.textContent = "Watch how the $5,000 works";
+    if (btn)  btn.textContent  = "Click to play";
+  }
+  var p = vid.play();
+  if (p && typeof p.catch === "function") {
+    p.then(function () {
+      window.bcgTrack("video_autoplay", { video_title: "owner-intro-v2" });
+    }).catch(autoplayBlocked);
+  }
+
+  function startWithSound() {
+    if (unmuted) return;
+    unmuted = true;
+    fired = {};                       /* measure the real watch from zero */
+    if (cta) cta.classList.add("hide");
+    if (end) end.classList.remove("show");
+    vid.muted = false;
+    vid.removeAttribute("muted");
+    vid.currentTime = 0;
+    var r = vid.play();
+    if (r && typeof r.catch === "function") r.catch(function () {});
+    window.bcgTrack("video_unmute", { video_title: "owner-intro-v2" });
+    mark("video_start", 0);
+  }
+
+  if (cta) {
+    cta.addEventListener("click", startWithSound);
+    cta.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); startWithSound(); }
+    });
+  }
 })();
 
 /* --- CTA clicks --- */
