@@ -245,6 +245,15 @@ section{padding:60px 0}
 .formcard .fh p{font-size:.95rem;color:var(--muted)}
 .formcard .fb{padding:6px 16px 12px}
 .formcard iframe{width:100%;border:none;min-height:840px;display:block;border-radius:8px}
+/* GoHighLevel's form_embed.js hides the iframe (opacity:0, visibility:hidden,
+   left:-9999px) until the embedded form reports its height back. When that
+   handshake does not arrive the form stays invisible and nobody can fill it
+   in -- which is exactly what happened. These rules keep it on screen and
+   usable whether or not the script ever answers. Do not remove. */
+.formcard .fb iframe{position:static !important;left:auto !important;top:auto !important;
+  opacity:1 !important;visibility:visible !important;pointer-events:auto !important;
+  width:100% !important;display:block !important}
+.formcard .ep-wrapper,.formcard .ep-iFrameContainer{height:auto !important;overflow:visible !important}
 .formcard .ff{background:var(--cream);border-top:1px solid var(--line);padding:13px 30px;
   font-size:.78rem;color:var(--muted);text-align:center}
 .qualify{max-width:38rem;margin:26px auto 0;text-align:center;font-size:.88rem;color:var(--muted);line-height:1.6}
@@ -346,7 +355,7 @@ footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
           src="https://link.basecampgetaways.com/widget/form/lP9XJGVu2IMp36QBKlM6"
           style="width:100%;height:100%;border:none;border-radius:8px"
           id="inline-lP9XJGVu2IMp36QBKlM6"
-          data-layout="{'id':'INLINE'}"
+          data-layout='{"id":"INLINE"}'
           data-trigger-type="alwaysShow"
           data-trigger-value=""
           data-activation-type="alwaysActivated"
@@ -354,11 +363,8 @@ footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
           data-deactivation-type="neverDeactivate"
           data-deactivation-value=""
           data-form-name="Basecamp Getaways Management  - Ads From-PCM"
-          data-height="undefined"
           data-layout-iframe-id="inline-lP9XJGVu2IMp36QBKlM6"
           data-form-id="lP9XJGVu2IMp36QBKlM6"
-          data-cookie-consent="true"
-          data-cookie-consent-provider="auto"
           title="Free income projection request"></iframe>
       </div>
       <div class="ff">Your information stays with us. We don&rsquo;t sell or share owner data.</div>
@@ -867,6 +873,53 @@ footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
 </a>
 
 <script src="https://link.basecampgetaways.com/js/form_embed.js"></script>
+<script>
+/* ---------------------------------------------------------------------------
+   KEEP THE LEAD FORM VISIBLE
+   form_embed.js parks the iframe off-screen (opacity:0, left:-9999px) and only
+   reveals it once the embedded form posts its height back. On this page that
+   message often never arrives, so the form was invisible and leads were lost.
+   We reveal it ourselves and size it from the height message when it does come,
+   falling back to a generous floor when it does not. Extra white space inside
+   the card is a far cheaper failure than an invisible form.
+   --------------------------------------------------------------------------- */
+(function () {
+  var f = document.querySelector('iframe[data-form-id]');
+  if (!f) return;
+  function floorH() { return window.innerWidth <= 820 ? 1650 : 1300; }
+  function setH(px) { f.style.setProperty("height", Math.round(px) + "px", "important"); }
+  function reveal() {
+    f.style.setProperty("position", "static", "important");
+    f.style.setProperty("left", "auto", "important");
+    f.style.setProperty("opacity", "1", "important");
+    f.style.setProperty("visibility", "visible", "important");
+    f.style.setProperty("pointer-events", "auto", "important");
+    f.style.setProperty("width", "100%", "important");
+    var p = f.parentElement, g = p && p.parentElement;
+    [p, g].forEach(function (el) {
+      if (el && /ep-/.test(el.className || "")) el.style.setProperty("height", "auto", "important");
+    });
+  }
+  var sized = false;
+  reveal(); setH(floorH());
+  /* iFrameSizer posts "[iFrameSizer]<id>:<height>:<width>:init" */
+  window.addEventListener("message", function (e) {
+    if (!/leadconnector|basecampgetaways/.test(e.origin || "")) return;
+    var d = typeof e.data === "string" ? e.data : "";
+    if (d.indexOf("[iFrameSizer]") !== 0) return;
+    var m = d.match(/\[iFrameSizer\][^:]*:([0-9.]+):/);
+    if (m) {
+      var h = parseFloat(m[1]);
+      if (h > 500) { sized = true; setH(h + 24); }
+    }
+    reveal();
+  }, false);
+  /* form_embed.js can re-hide it after we run, so hold the line briefly. */
+  var t = setInterval(function () { reveal(); if (!sized) setH(floorH()); }, 400);
+  setTimeout(function () { clearInterval(t); }, 20000);
+  window.addEventListener("resize", function () { if (!sized) setH(floorH()); });
+})();
+</script>
 <script>
 /* -----------------------------------------------------------
    OWNER INTRO VIDEO
