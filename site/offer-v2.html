@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>See What Your Vacation Rental Could Earn — Free Projection | Basecamp Getaways</title>
+<meta name="description" content="A free, custom income projection for your vacation rental — plus a listing analysis, a how-we-compare breakdown and a custom quote. Back in two business days, no obligation.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B2E39">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GCH2R80WZV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  /* Every event on this page carries the market tag from ?m=, so GA4 can be
+     segmented by campaign source (hartwell, keowee, ads, ...). */
+  (function () {
+    var m = (new URLSearchParams(window.location.search).get("m") || "direct").toLowerCase();
+    window.BCG_MARKET = m;
+    gtag('config', 'G-GCH2R80WZV', { market: m });
+  })();
+  /* Small helper so the rest of the page can fire events safely even if
+     gtag is blocked by an ad blocker. */
+  window.bcgTrack = function (name, params) {
+    try {
+      params = params || {};
+      params.market = window.BCG_MARKET || "direct";
+      gtag('event', name, params);
+    } catch (e) {}
+  };
+</script>
+
+<style>
+:root{
+  --navy:#1B2E39; --cream:#FDFAF1; --sand:#F5EEDA;
+  --gold:#C9A63D; --gold-lt:#EBD79A; --gold-dk:#8F7320;
+  --ink:#1B2830; --body:#313E46; --muted:#5E6E78; --line:#E2DACA;
+  --green:#2F6B4F; --white:#fff; --maxw:1020px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--body);background:var(--cream);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:64px}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;color:var(--navy);line-height:1.08}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.narrow{max-width:790px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+strong{font-weight:700;color:var(--navy)}
+img{max-width:100%;display:block}
+
+/* ---------------- topbar: logo only, centered ---------------- */
+.topbar{background:var(--navy);padding:14px 0}
+.topbar .wrap{display:flex;align-items:center;justify-content:center}
+.topbar img{height:56px;width:auto}
+
+/* ---------------- hero ---------------- */
+.hero{background:var(--navy);color:var(--cream);padding:40px 0 52px;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse 65% 55% at 50% 0%, rgba(201,166,61,.17), transparent 65%)}
+.hero .narrow{position:relative}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:16px}
+.eyebrow.dark{color:var(--gold-dk);text-align:center}
+.hero h1{font-size:clamp(2.3rem,5.8vw,3.8rem);color:var(--cream);margin-bottom:18px}
+.hero h1 .pay{color:var(--gold);white-space:nowrap}
+.hero h1 .free{display:block;font-size:.62em;margin-top:12px;color:var(--gold-lt);font-style:italic;font-weight:500}
+.hero .sub{font-size:1.1rem;color:rgba(253,250,241,.86);max-width:34rem;margin:0 auto 30px}
+.ledger{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:34rem;margin:28px auto 0;
+  border:1px solid rgba(235,215,154,.34);border-radius:10px;overflow:hidden;background:rgba(253,250,241,.05)}
+.ledger div{padding:16px 10px}
+.ledger div+div{border-left:1px solid rgba(235,215,154,.22)}
+.ledger b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.72rem;
+  font-weight:700;line-height:1;color:var(--gold)}
+.ledger .zero b{color:#7FD4A8}
+.ledger span{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(253,250,241,.72);margin-top:8px;line-height:1.4}
+.vid{max-width:41rem;margin:0 auto;border-radius:12px;overflow:hidden;
+  box-shadow:0 22px 54px rgba(0,0,0,.42);background:#0d1b23;position:relative}
+.vid video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0d1b23}
+.vid-end{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;background:rgba(17,37,48,.92);padding:24px}
+.vid-end.show{display:flex}
+.vid-end p{font-size:1.1rem;color:#fff;font-weight:600;max-width:24ch}
+/* Muted-autoplay overlay. Sits above the video until the viewer clicks to
+   unmute, which restarts playback from zero with sound. */
+.vid-cta{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:16px;text-align:center;padding:22px;cursor:pointer;
+  background:rgba(21,61,99,.46);transition:opacity .25s ease}
+.vid-cta.hide{opacity:0;pointer-events:none}
+.vid-cta .l1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;color:#fff;
+  font-size:clamp(1.35rem,3.6vw,2rem);line-height:1.12;text-shadow:0 2px 16px rgba(0,0,0,.45)}
+.vid-cta .l2{display:inline-flex;align-items:center;gap:9px;background:var(--cream);
+  color:var(--navy);font-weight:800;font-size:.92rem;padding:12px 24px;border-radius:100px;
+  box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.vid-cta .l2 svg{width:17px;height:17px;flex:none}
+.vid-cta:hover .l2{background:#fff}
+
+.btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;
+  font-size:1.02rem;text-decoration:none;padding:19px 42px;border-radius:8px;
+  box-shadow:0 6px 22px rgba(201,166,61,.34);transition:transform .12s,background .18s}
+.btn:hover{background:#D8B54B;transform:translateY(-2px)}
+.btn-lg{font-size:1.1rem;padding:22px 52px}
+.micro{font-size:.84rem;color:rgba(253,250,241,.7);margin-top:20px}
+.micro.dark{color:var(--muted)}
+
+section{padding:60px 0}
+.sec-h{text-align:center;margin-bottom:12px;font-size:clamp(1.85rem,4.2vw,2.7rem)}
+.sec-sub{text-align:center;color:var(--muted);max-width:44rem;margin:0 auto 40px;font-size:1.04rem}
+
+/* ---------------- why us ---------------- */
+.why{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:26px;
+  box-shadow:0 2px 10px rgba(27,46,57,.05)}
+.card .k{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-dk);margin-bottom:9px}
+.card h3{font-size:1.32rem;margin-bottom:9px}
+.card p{font-size:.96rem}
+.card.wide{grid-column:1 / -1}
+.life{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.life div{aspect-ratio:3/2;border-radius:9px;overflow:hidden;background:#E5DECF}
+.life img{width:100%;height:100%;object-fit:cover}
+.lifecap{font-size:.8rem;color:var(--muted);margin-top:12px;font-style:italic}
+.sitelist{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.sitelist span{background:var(--sand);border:1px solid var(--line);border-radius:100px;
+  padding:6px 14px;font-size:.82rem;font-weight:600;color:var(--navy)}
+
+/* ---------------- offer ---------------- */
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:54rem;margin:0 auto}
+.pick{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:26px;
+  display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(27,46,57,.05)}
+.pick .wepay{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin-bottom:9px}
+.pick h3{font-size:1.4rem;margin-bottom:9px}
+.pick p{font-size:.96rem}
+.pick .plist{list-style:none;margin:14px 0 0;padding:0}
+.pick .plist li{position:relative;padding-left:20px;font-size:.92rem;color:var(--muted);
+  line-height:1.5;margin-bottom:7px}
+.pick .plist li:last-child{margin-bottom:0}
+.pick .plist li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--gold-dk);
+  font-weight:800;font-size:.86rem}
+.pick .cap{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);
+  font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-dk)}
+.howwe{max-width:46rem;margin:30px auto 0;background:var(--sand);border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:22px 26px;font-size:.98rem}
+.howwe b{color:var(--navy)}
+
+/* ---------------- reviews ---------------- */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:26px;
+  display:flex;flex-direction:column}
+.rev.wide{grid-column:1 / -1}
+.rev .st{color:var(--gold);letter-spacing:2px;font-size:.95rem;margin-bottom:12px}
+.rev p{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-style:italic;
+  color:var(--ink);line-height:1.45}
+.rev.wide p{font-size:1.2rem}
+.rev .who{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+  margin-top:auto;padding-top:16px;font-weight:600}
+.gbadge{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  margin:0 auto 34px;max-width:40rem;background:var(--white);border:1px solid var(--line);
+  border-radius:12px;padding:16px 22px;text-align:center}
+.gbadge .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.1rem;font-weight:700;
+  color:var(--navy);line-height:1}
+.gbadge .s{color:var(--gold);letter-spacing:3px;font-size:1.05rem}
+.gbadge .t{font-size:.9rem;color:var(--muted)}
+.gbadge .t b{color:var(--navy)}
+.gbadge .div{width:1px;align-self:stretch;background:var(--line)}
+
+/* ---------------- rating band ---------------- */
+.rating{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:36px 0;text-align:center;margin-bottom:40px}
+.rating .big{font-family:'Cormorant Garamond',Georgia,serif;font-size:3.3rem;font-weight:700;color:var(--navy);line-height:1}
+.rating .st{color:var(--gold);font-size:1.3rem;letter-spacing:4px;margin:6px 0 8px}
+.rating .lbl{font-size:.94rem;color:var(--muted);max-width:40rem;margin:0 auto}
+.rating .lbl b{color:var(--navy)}
+
+/* ---------------- results ---------------- */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.proof.two{grid-template-columns:repeat(2,1fr);max-width:46rem;margin:0 auto 46px}
+.pf{background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column}
+.pf .ph{aspect-ratio:16/10;overflow:hidden;background:#E5DECF;border-bottom:1px solid var(--line)}
+.pf .ph img{width:100%;height:100%;object-fit:cover}
+.pf .b{padding:22px 22px 24px;display:flex;flex-direction:column;flex-grow:1}
+.pf .mk{font-size:.64rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dk);margin-bottom:8px}
+.pf h3{font-size:1.2rem;margin-bottom:12px}
+.pf .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:700;
+  color:var(--navy);line-height:1.1;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pf .num .ar{color:var(--gold)}
+.pf .cap{font-size:.88rem;color:var(--muted);margin-top:12px}
+
+/* ---------------- team ---------------- */
+.team{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;max-width:42rem;margin:0 auto}
+.tm{text-align:center}
+.tm .ph{aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#E5DECF;
+  border:1px solid var(--line);margin-bottom:14px}
+.tm .ph img{width:100%;height:100%;object-fit:cover}
+/* The two team photos are different shapes and neither is cropped for this
+   frame, so each gets its own framing. */
+.tm .ph img.faces{object-position:center 28%}
+.tm .ph img.group{transform:scale(1.8);transform-origin:44% 74%}
+.tm h3{font-size:1.24rem;margin-bottom:4px}
+.tm .role{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-dk);margin-bottom:9px}
+.tm p{font-size:.94rem;color:var(--muted)}
+
+/* ---------------- founder ---------------- */
+.founder{background:var(--navy);color:rgba(253,250,241,.9);text-align:center}
+.founder q{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,3vw,1.95rem);
+  font-style:italic;color:var(--cream);display:block;max-width:44rem;margin:0 auto;line-height:1.35;quotes:none}
+.founder .by{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:22px;font-weight:700}
+
+/* ---------------- steps ---------------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:50rem;margin:38px auto 0}
+.step{text-align:center}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold-lt);
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.step h3{font-size:1.2rem;margin-bottom:7px}
+.step p{font-size:.94rem;color:var(--muted)}
+
+/* ---------------- faq ---------------- */
+.faq{max-width:46rem;margin:0 auto}
+.faq details{background:var(--white);border:1px solid var(--line);border-radius:10px;
+  margin-bottom:12px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:20px 54px 20px 24px;position:relative;
+  font-weight:700;color:var(--navy);font-size:1.02rem;line-height:1.4}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  font-size:1.5rem;font-weight:400;color:var(--gold-dk);line-height:1}
+.faq details[open] summary:after{content:"\2013"}
+.faq .a{padding:0 24px 22px;font-size:.98rem;color:var(--body)}
+.faq .a p+p{margin-top:12px}
+
+/* ---------------- final cta ---------------- */
+.finalcta{background:var(--navy);color:var(--cream);text-align:center}
+.finalcta h2{color:var(--cream);font-size:clamp(1.9rem,4.4vw,2.8rem);margin-bottom:14px}
+.finalcta p.l{color:rgba(253,250,241,.85);max-width:34rem;margin:0 auto 30px}
+.finalcta .or{margin-top:22px;font-size:.98rem;color:rgba(253,250,241,.8)}
+.finalcta .or a{color:var(--gold-lt);font-weight:700;text-decoration:none;white-space:nowrap}
+
+/* ---------------- form ---------------- */
+.formsec{background:var(--sand);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.formcard{background:var(--white);border-radius:14px;border-top:4px solid var(--gold);
+  box-shadow:0 16px 44px rgba(27,46,57,.13);overflow:hidden;max-width:38rem;margin:0 auto}
+.formcard .fh{padding:26px 30px 20px;text-align:center;border-bottom:1px solid var(--line)}
+.formcard .fh h2{font-size:1.9rem;margin-bottom:7px}
+.formcard .fh p{font-size:.95rem;color:var(--muted)}
+.formcard .fb{padding:6px 16px 12px}
+.formcard iframe{width:100%;border:none;min-height:840px;display:block;border-radius:8px}
+/* GoHighLevel's form_embed.js hides the iframe (opacity:0, visibility:hidden,
+   left:-9999px) until the embedded form reports its height back. When that
+   handshake does not arrive the form stays invisible and nobody can fill it
+   in -- which is exactly what happened. These rules keep it on screen and
+   usable whether or not the script ever answers. Do not remove. */
+.formcard .fb iframe{position:static !important;left:auto !important;top:auto !important;
+  opacity:1 !important;visibility:visible !important;pointer-events:auto !important;
+  width:100% !important;display:block !important}
+.formcard .ep-wrapper,.formcard .ep-iFrameContainer{height:auto !important;overflow:visible !important}
+.formcard .ff{background:var(--cream);border-top:1px solid var(--line);padding:13px 30px;
+  font-size:.78rem;color:var(--muted);text-align:center}
+.qualify{max-width:38rem;margin:26px auto 0;text-align:center;font-size:.88rem;color:var(--muted);line-height:1.6}
+.qualify b{color:var(--navy)}
+
+footer{background:var(--navy);color:rgba(253,250,241,.66);padding:44px 0 38px;text-align:center;font-size:.9rem}
+footer img{height:70px;width:auto;margin:0 auto 18px}
+footer .mission{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+  font-size:1.16rem;color:var(--cream);max-width:34rem;margin:0 auto 22px;line-height:1.45}
+footer .cx{display:flex;gap:10px 26px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer .cx a{color:var(--gold-lt);text-decoration:none;font-weight:700}
+footer .mk{font-size:.78rem;color:rgba(253,250,241,.45);margin-top:10px}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--navy);
+  border-top:2px solid var(--gold);display:flex;align-items:center;justify-content:center;gap:16px;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 24px rgba(0,0,0,.3);
+  text-decoration:none}
+.sticky .t{color:var(--cream);font-size:.86rem;font-weight:600;line-height:1.25}
+.sticky .t b{color:var(--gold-lt)}
+.sticky .btn{padding:12px 22px;font-size:.88rem;box-shadow:none}
+
+@media(max-width:820px){
+  body{font-size:16px}
+  .hero{padding:30px 0 40px}
+  section{padding:46px 0}
+  .hero .sub{font-size:1rem;margin-bottom:22px}
+  .ledger{grid-template-columns:1fr 1fr 1fr;max-width:23rem}
+  .ledger div{padding:12px 4px}
+  .ledger b{font-size:1.3rem}
+  .ledger span{font-size:.56rem;letter-spacing:.07em;line-height:1.35}
+  .picks,.proof,.steps,.revs,.why,.team{grid-template-columns:1fr}
+  .life{grid-template-columns:1fr}
+  .btn{width:100%;padding:18px 20px}
+  .sticky .btn{width:auto}
+  .sticky .t{display:none}
+  .formcard iframe{min-height:900px}
+  .rating .big{font-size:2.7rem}
+  .topbar img{height:44px}
+  .gbadge{flex-direction:column;gap:8px}
+  .gbadge .div{display:none}
+  .tm .ph{max-width:20rem;margin:0 auto 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= HEADER: logo only, centered ======================= -->
+<div class="topbar">
+  <div class="wrap">
+    <img src="https://basecampgetaways.com/assets/logo.png" alt="Basecamp Getaways">
+  </div>
+</div>
+
+<!-- ======================= HERO ======================= -->
+<div class="hero" id="top">
+  <div class="narrow">
+
+    <h1>See what your <span class="pay" id="mktHead">vacation rental</span> could
+      <span class="free">actually be earning.</span></h1>
+
+    <p class="sub">A free, custom income projection from a team that doesn&rsquo;t just manage
+      short-term rentals &mdash; we own and operate them, so we know what actually works.</p>
+
+    <!-- VIDEO SLOT — hidden until VIDEO_SRC is set at the bottom of this file -->
+    <div class="vid" id="heroVideo" hidden>
+      <video id="ownerVideo" controls muted autoplay playsinline preload="auto"></video>
+      <div class="vid-cta" id="vidCta" role="button" tabindex="0"
+           aria-label="Unmute and restart the video">
+        <div class="l1" id="vidCtaLine">Your video is playing</div>
+        <div class="l2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg><span id="vidCtaBtn">Click to unmute</span></div>
+      </div>
+      <div class="vid-end" id="vidEnd">
+        <p>Find out what your home could earn.</p>
+        <a class="btn" href="#form">Get my free projection &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ledger">
+      <div><b>$130K+</b><span>What a home we manage is pacing this year</span></div>
+      <div class="zero"><b>$0</b><span>What it costs you</span></div>
+      <div><b>2 days</b><span>To get your numbers</span></div>
+    </div>
+
+    <p class="micro">Your free projection is right below &mdash; it takes 60 seconds.</p>
+  </div>
+</div>
+
+<!-- ======================= FORM (moved up) ======================= -->
+<section class="formsec" id="form">
+  <div class="wrap">
+    <div class="formcard">
+      <div class="fh">
+        <h2>Get your free projection</h2>
+        <p>What your home should earn &mdash; plus a free listing analysis and a custom quote.</p>
+      </div>
+      <div class="fb">
+        <iframe
+          src="https://link.basecampgetaways.com/widget/form/lP9XJGVu2IMp36QBKlM6"
+          style="width:100%;height:100%;border:none;border-radius:8px"
+          id="inline-lP9XJGVu2IMp36QBKlM6"
+          data-layout='{"id":"INLINE"}'
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Basecamp Getaways Management  - Ads From-PCM"
+          data-layout-iframe-id="inline-lP9XJGVu2IMp36QBKlM6"
+          data-form-id="lP9XJGVu2IMp36QBKlM6"
+          title="Free income projection request"></iframe>
+      </div>
+      <div class="ff">Your information stays with us. We don&rsquo;t sell or share owner data.</div>
+    </div>
+
+    <p class="qualify">Free and no obligation. You keep the projection whether or not we ever
+      work together &mdash; we only earn when your home books.</p>
+  </div>
+</section>
+
+<!-- ======================= OWNER REVIEWS ======================= -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow dark">From owners we work with</p>
+    <h2 class="sec-h">What they say.</h2>
+    <p class="sec-sub">Reviews from property owners, not guests.</p>
+
+    <div class="gbadge">
+      <div>
+        <div class="n">5.0</div>
+        <div class="s">★★★★★</div>
+      </div>
+      <div class="div"></div>
+      <div class="t"><b>28 Google reviews</b><br>from owners and guests</div>
+    </div>
+
+    <div class="revs">
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Joseph and Erin have been essential on our STR journey. We couldn&rsquo;t do it
+          without them! From design to management, they do it all and do it well! I highly
+          recommend them!&rdquo;</p>
+        <div class="who">Candace Newman &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Absolutely stellar to work with! Their knowledge of the short term rental space
+          combined with their hospitality and kindness make them the best in the area!&rdquo;</p>
+        <div class="who">Punith Upadhya &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;It was a pleasure working with Basecamp for our new property. The team is
+          professional, knowledgeable and efficient. Can&rsquo;t wait to find another property, I
+          know who I&rsquo;ll be calling!&rdquo;</p>
+        <div class="who">Christopher Price &middot; Google review</div>
+      </div>
+
+      <div class="rev wide">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;I am a property owner who signed up with Basecamp to manage our short-term
+          rentals. It&rsquo;s clear that Joseph and his team know what they are doing. They were
+          extremely helpful in getting our lake house up to snuff, and within a month, he had our
+          property rated as a &lsquo;Guest Favorite&rsquo; on Airbnb. His guest-first policy
+          obviously works, because our guests have been raving about how much they enjoyed staying
+          at our place, and his attention to detail is amazing. Couldn&rsquo;t be happier.&rdquo;</p>
+        <div class="who">Erich Kimbrough &middot; Google review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= RESULTS ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow dark">Real homes, real numbers</p>
+    <h2 class="sec-h">What that looks like.</h2>
+    <p class="sec-sub">Three owners, three starting points, same local team.</p>
+
+    <div class="proof">
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/1715332/TFJYOwcc1liIEA3xnjeLbH1oIC4nMedsRuY3W0Ng.jpg" alt="Saluda River Basecamp"></div>
+        <div class="b">
+          <div class="mk">Greenville &middot; Saluda River</div>
+          <h3>Saluda River Basecamp</h3>
+          <div class="num">$85K <span class="ar">&rarr;</span> $110K</div>
+          <p class="cap">Beat its year-one projection by 29%. Now pacing $130K+ with $120K already
+            on the books.</p>
+        </div>
+      </div>
+
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/2080462/8gLe3QYzQdqXNJ0EpcbFFA2xlRa5iFoMIF3WuRuy.jpg" alt="Quittin' Time Cottage"></div>
+        <div class="b">
+          <div class="mk">Lake Hartwell</div>
+          <h3>Quittin&rsquo; Time Cottage</h3>
+          <div class="num">&lt;$35K <span class="ar">&rarr;</span> $100K+</div>
+          <p class="cap">Roughly 3x after we took over &mdash; renovation, hot tub over the water,
+            dock and private beach.</p>
+        </div>
+      </div>
+
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/1327820/y8mR8dvEwMlPTbQS5IwYhF2wYvZMyAIXYZ70zgS7.jpg" alt="Star Mountain"></div>
+        <div class="b">
+          <div class="mk">Blue Ridge, GA</div>
+          <h3>Star Mountain</h3>
+          <div class="num">35% fee <span class="ar">&rarr;</span> $96K</div>
+          <p class="cap">Left a manager charging 35%. New pricing, new photos, local staff &mdash;
+            $96K in 2025.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= THE OFFER ======================= -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow dark">What you get &mdash; free, no obligation</p>
+    <h2 class="sec-h">Request your projection and we&rsquo;ll send you all of this &mdash; free.</h2>
+    <p class="sec-sub">No cost, no commitment. Just a clear, honest picture of where your
+      <span id="mktHome">home</span> stands and what it could be doing.</p>
+
+    <div class="picks">
+      <div class="pick">
+        <div class="wepay">Free</div>
+        <h3>Custom income projection</h3>
+        <p>An honest, data-backed answer to one question: what should your home actually be
+          earning?</p>
+        <ul class="plist">
+          <li>Custom comp set built from homes like yours</li>
+          <li>Real-world examples of high-performing properties nearby</li>
+          <li>A straight answer &mdash; not an inflated sales number</li>
+        </ul>
+      </div>
+
+      <div class="pick">
+        <div class="wepay">Free</div>
+        <h3>Full listing analysis</h3>
+        <p>We analyze every part of your listing and show you exactly where revenue and visibility
+          are slipping away.</p>
+        <ul class="plist">
+          <li>Photos and visual first impression</li>
+          <li>Title and description copy</li>
+          <li>Pricing and the gaps costing you bookings</li>
+        </ul>
+      </div>
+
+      <div class="pick">
+        <div class="wepay">Free</div>
+        <h3>How we compare</h3>
+        <p>A clear, side-by-side look at how we run a home versus a typical manager &mdash; pricing,
+          marketing, guest care, and fees.</p>
+        <ul class="plist">
+          <li>Where other managers leave money behind</li>
+          <li>What &ldquo;active management&rdquo; actually means</li>
+          <li>No jargon &mdash; just the real differences</li>
+        </ul>
+      </div>
+
+      <div class="pick">
+        <div class="wepay">Free</div>
+        <h3>Your custom quote</h3>
+        <p>A tailored proposal for your home &mdash; the exact services we&rsquo;d provide and what
+          it would look like to work together.</p>
+        <ul class="plist">
+          <li>Services matched to your property and goals</li>
+          <li>Transparent, straightforward pricing</li>
+          <li>Setup, marketing, pricing and property care included</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="howwe">We only make money when your home books &mdash; <b>we earn a percentage of what
+      it actually earns</b>, nothing up front. That&rsquo;s why the projection is free and why it&rsquo;s
+      honest: a home that earns more pays us more, so there&rsquo;s no upside for us in handing you an
+      inflated number.</p>
+  </div>
+</section>
+
+<!-- ======================= HOW IT WORKS ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow dark">How it works</p>
+    <h2 class="sec-h">Three steps. Nothing signed until you&rsquo;ve seen real numbers.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Tell us about your home</h3>
+        <p>Sixty seconds on the form. Address, bedrooms, and how you use it.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>We send your projection</h3>
+        <p>Inside two business days you get real numbers for your property and your market &mdash; free.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>We talk it through</h3>
+        <p>An honest assessment of your home and whether Basecamp is a good fit. If we are, you get
+          a custom quote for your home. No pressure either way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= MEET THE TEAM ======================= -->
+<section id="team">
+  <div class="wrap">
+    <p class="eyebrow dark">Meet the team</p>
+    <h2 class="sec-h">The people who will actually run your home.</h2>
+    <p class="sec-sub">Not a call center. A small local team you will know by name.</p>
+
+    <div class="team" id="teamGrid">
+      <div class="tm">
+        <div class="ph"><img class="faces" src="/assets/DAvid%20photo.jpeg" alt="David Blackwell, Basecamp Getaways"></div>
+        <h3>David Blackwell</h3>
+        <div class="role">Operations</div>
+        <p>Runs the homes day to day &mdash; crews, turnovers, maintenance, and the calls that come
+          at bad hours.</p>
+      </div>
+
+      <div class="tm">
+        <div class="ph"><img class="group" src="/assets/IMG_7150.JPG" alt="Joseph Kirton and family, Basecamp Getaways"></div>
+        <h3>Joseph Kirton</h3>
+        <div class="role">Founder</div>
+        <p>Twenty-plus years in real estate. Builds every projection, and owns short-term rentals
+          of his own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= WHY (differentiators) ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow dark">Why owners move to us</p>
+    <h2 class="sec-h">We are not a call center with a spreadsheet.</h2>
+    <p class="sec-sub">A small, boutique company that owns vacation rentals of its own &mdash;
+      run by people who know what actually gets a home booked.</p>
+
+    <div class="why">
+
+      <div class="card">
+        <div class="k">Owners ourselves</div>
+        <h3>We own vacation rentals too</h3>
+        <p>We&rsquo;re not managing your home from a theory. We own and run our own short-term
+          rentals, so we treat yours the way we treat ours &mdash; because we&rsquo;ve had the 11pm
+          call, the freeze warning, the guest who lost a key.</p>
+      </div>
+
+      <div class="card">
+        <div class="k">20+ years</div>
+        <h3>Two decades in real estate</h3>
+        <p>Over twenty years of real estate experience behind every projection, every pricing
+          decision, and every recommendation about what to put money into &mdash; and what to skip.</p>
+      </div>
+
+      <div class="card">
+        <div class="k">Small on purpose</div>
+        <h3>A boutique portfolio, not a warehouse</h3>
+        <p>We take a limited number of homes so each one gets real attention. Your property is
+          never one of four hundred listings someone glances at once a week.</p>
+      </div>
+
+      <div class="card">
+        <div class="k">Repeat demand</div>
+        <h3>We market straight to past guests</h3>
+        <p>Every guest who has ever stayed with us goes into a database we market to directly.
+          That&rsquo;s demand we own &mdash; not demand we rent from Airbnb every time your calendar
+          opens up.</p>
+      </div>
+
+      <div class="card wide">
+        <div class="k">Photography</div>
+        <h3>High-end lifestyle photography, through an exclusive relationship</h3>
+        <p>We work exclusively with one of the best vacation-rental photographers in the industry.
+          Not a realtor with a wide lens &mdash; lifestyle imagery that makes someone picture their
+          weekend in your home. It is the single biggest lever on your click-through rate.</p>
+        <div class="life">
+          <div><img src="/assets/lifestyle-dock-sunset.jpg" decoding="async" alt="Sunset on the dock at a Lake Hartwell home we manage"></div>
+          <div><img src="/assets/lifestyle-cornhole.jpg" decoding="async" alt="Guests playing cornhole in the yard of a managed home"></div>
+          <div><img src="/assets/lifestyle-kayaks.jpg" decoding="async" alt="Kayaks and paddleboards off the dock at a lake home"></div>
+        </div>
+        <p class="lifecap">Real guests, real stays &mdash; shot by our photographer at homes we manage.</p>
+      </div>
+
+      <div class="card wide">
+        <div class="k">Direct booking</div>
+        <h3>We built an SEO-optimized booking site for every market we serve</h3>
+        <p>Most managers list your home on Airbnb and hope. We also run a highly customized,
+          SEO-optimized direct-booking site for every market we serve, so guests book direct, free
+          of Airbnb&rsquo;s guest fees &mdash; and your home gets found by people searching for a
+          lake house, not just people already browsing a platform.</p>
+        <div class="sitelist">
+          <span>LakeHartwellStays.com</span>
+          <span>LakeKeoweeStays.com</span>
+          <span>LakeMurrayStays.com</span>
+          <span>BlueRidgeGAStays.com</span>
+          <span>EdistoStays.com</span>
+          <span>GreenvilleStays.com</span>
+        </div>
+      </div>
+
+      <div class="card wide">
+        <div class="k">What actually books</div>
+        <h3>We know which amenities move the number</h3>
+        <p>A hot tub, a sauna, a game room, the right outdoor living space &mdash; we know which
+          additions pay for themselves in your market and which ones are a nice idea that never
+          returns a dollar. That judgment goes into every projection we send.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FOUNDER ======================= -->
+<section class="founder">
+  <div class="wrap">
+    <q>When the calendar fills every July no matter what, the pressure to do better disappears.
+      We never got that memo &mdash; we treat every home like it&rsquo;s the only one we manage.</q>
+    <div class="by">Joseph &middot; Basecamp Getaways</div>
+  </div>
+</section>
+
+<!-- ======================= GUEST PROOF ======================= -->
+<section style="padding-top:0">
+  <div class="rating">
+    <div class="wrap">
+      <div class="big">4.92</div>
+      <div class="st">★★★★★</div>
+      <p class="lbl"><b>1,436 guest reviews</b> across the homes we manage &mdash; because how a home
+        is run is what an owner is really buying.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="eyebrow dark">Two more, two different situations</p>
+    <h2 class="sec-h">It isn&rsquo;t only lake houses.</h2>
+    <p class="sec-sub">One owner was underexposed. The other was doing it all himself.</p>
+
+    <div class="proof two">
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/2161510/oXzVCbjyZFiWWLuksKLWlxuuVcg5o5VxeBdeMJU7.jpg" alt="Watersedge on Lake Hartwell"></div>
+        <div class="b">
+          <div class="mk">Anderson &middot; Lake Hartwell</div>
+          <h3>Watersedge</h3>
+          <div class="num">On pace to <span class="ar">&rarr;</span> 2&times;</div>
+          <p class="cap">A good house almost nobody was seeing. New lifestyle photography, the
+            amenities we knew would book it, and listings across more channels &mdash; now on pace
+            to double its previous year.</p>
+        </div>
+      </div>
+
+      <div class="pf">
+        <div class="ph"><img src="https://assets.hospitable.com/property_images/1273118/FikoZLrZ6pOhLaxTsgHnSKuk92ywfvssnmZkM4QW.jpg" alt="Whitsett Retreat, downtown Greenville"></div>
+        <div class="b">
+          <div class="mk">Greenville &middot; Downtown triplex</div>
+          <h3>Whitsett Retreat</h3>
+          <div class="num">Self-managed <span class="ar">&rarr;</span> +15%</div>
+          <p class="cap">The owner had been running all three units himself. After our fees came
+            out, his payouts were 15% higher than what he had been making on his own.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="eyebrow dark">And from the guests in them</p>
+    <h2 class="sec-h">What your guests would say.</h2>
+    <p class="sec-sub">Every one of these is a five-star review of a home we manage.</p>
+
+    <div class="revs">
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Great vacation on Lake Hartwell. House was exactly as advertised, if not better,
+          and our entire family enjoyed our time there.&rdquo;</p>
+        <div class="who">Carl Jones &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;Great house on Lake Hartwell! House had everything you need with lots of awesome
+          extras for all ages. Would love to stay again soon.&rdquo;</p>
+        <div class="who">Heidi Humphries &middot; Google review</div>
+      </div>
+
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        <p>&ldquo;I truly enjoyed everything about this experience! Whether it be the home or the
+          ease of communication with the host!&rdquo;</p>
+        <div class="who">William Skelton &middot; Google review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section style="background:var(--white);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow dark">Questions owners ask</p>
+    <h2 class="sec-h">The honest answers.</h2>
+    <p class="sec-sub">If yours isn&rsquo;t here, call us &mdash; the number is at the bottom of this page.</p>
+
+    <div class="faq" id="faq">
+
+      <details>
+        <summary>Is the projection really free?</summary>
+        <div class="a">
+          <p>Yes, free and no obligation. You get the projection, a listing analysis, and a custom
+            quote whether or not we ever work together. We only earn when your home books.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What do you charge?</summary>
+        <div class="a">
+          <p>A percentage of what your home actually earns &mdash; no setup fee, no monthly
+            retainer, nothing before your first booking. We&rsquo;ll give you the exact number with
+            your projection, because the right percentage depends on your home and your market.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Am I locked into a long contract?</summary>
+        <div class="a">
+          <p>No multi-year lock-up. We&rsquo;d rather keep your home by earning it every month. We
+            talk terms openly and put them in writing before anything&rsquo;s signed.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I still use my own house?</summary>
+        <div class="a">
+          <p>Yes. It&rsquo;s your home. Block the weeks you want on the calendar and we work around
+            them. We&rsquo;ll be honest with you about which weeks are expensive to hold so you can
+            decide with real numbers in front of you.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I already have a manager. Is switching a headache?</summary>
+        <div class="a">
+          <p>It&rsquo;s the most common move we make, and we handle it. We take over the listings,
+            keep existing reservations intact so no guest gets disrupted, re-shoot the home, reset
+            pricing, and put local staff on it. Star Mountain came to us from a manager charging
+            35% and did $96K the following year.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I self-manage on Airbnb. Why hand it over?</summary>
+        <div class="a">
+          <p>Usually for two reasons: the 11pm calls, and the ceiling. We run pricing daily, market
+            directly to every guest who has ever stayed with us, and list your home on our own
+            market booking sites, where guests book direct free of guest fees. Most owners who switch
+            aren&rsquo;t just buying their evenings back &mdash; they end up above what they were
+            doing alone.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Who handles cleaning, maintenance and the 2am problem?</summary>
+        <div class="a">
+          <p>We do. Vetted local crews on a turnover schedule built around guests, our own people
+            for maintenance, and a real person answering the phone when something goes wrong at an
+            unreasonable hour. You find out afterwards, in a message that says it&rsquo;s already
+            handled.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Which markets do you cover?</summary>
+        <div class="a">
+          <p>Lake Hartwell, Lake Keowee, Lake Murray, Blue Ridge GA, Edisto and the Greenville area.
+            If your home is near one of those, we&rsquo;re local to it.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What happens after I submit the form?</summary>
+        <div class="a">
+          <p>Within two business days you get a real projection for your property and your market,
+            along with your listing analysis. Then an honest conversation about whether Basecamp is
+            a good fit &mdash; including when we think it isn&rsquo;t. If we are, you get a custom
+            quote for your home. No cost, no obligation, no pressure at any point.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FINAL CTA ======================= -->
+<section class="finalcta">
+  <div class="narrow">
+    <h2>Find out what your home could earn.</h2>
+    <p class="l">A real projection for your property and your market, back in two business days.
+      Free, and yours to keep whatever you decide.</p>
+    <a class="btn btn-lg" href="#form">Get My Free Projection &rarr;</a>
+    <p class="or">Or just call us &mdash; <a class="phLink" href="tel:8645813164">864-581-3164</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="https://basecampgetaways.com/assets/logo.png" alt="Basecamp Getaways">
+    <p class="mission">We help owners turn a second home into a business that runs without them
+      &mdash; and give every guest a base worth coming back to.</p>
+    <div class="cx">
+      <a class="phLink" href="tel:8645813164">864-581-3164</a>
+      <a href="mailto:joseph@basecampgetaways.com">joseph@basecampgetaways.com</a>
+    </div>
+    <div class="mk">Lake Hartwell &middot; Lake Keowee &middot; Lake Murray &middot; Blue Ridge &middot; Edisto &middot; Greenville</div>
+  </div>
+</footer>
+
+<a class="sticky" href="#form">
+  <span class="t">See what your place could earn &mdash; <b>free</b>, no obligation.</span>
+  <span class="btn">Get My Free Projection &rarr;</span>
+</a>
+
+<script src="https://link.basecampgetaways.com/js/form_embed.js"></script>
+<script>
+/* ---------------------------------------------------------------------------
+   KEEP THE LEAD FORM VISIBLE
+   form_embed.js parks the iframe off-screen (opacity:0, left:-9999px) and only
+   reveals it once the embedded form posts its height back. On this page that
+   message often never arrives, so the form was invisible and leads were lost.
+   We reveal it ourselves and size it from the height message when it does come,
+   falling back to a generous floor when it does not. Extra white space inside
+   the card is a far cheaper failure than an invisible form.
+   --------------------------------------------------------------------------- */
+(function () {
+  var f = document.querySelector('iframe[data-form-id]');
+  if (!f) return;
+  function floorH() { return window.innerWidth <= 820 ? 1650 : 1300; }
+  function setH(px) { f.style.setProperty("height", Math.round(px) + "px", "important"); }
+  function reveal() {
+    f.style.setProperty("position", "static", "important");
+    f.style.setProperty("left", "auto", "important");
+    f.style.setProperty("opacity", "1", "important");
+    f.style.setProperty("visibility", "visible", "important");
+    f.style.setProperty("pointer-events", "auto", "important");
+    f.style.setProperty("width", "100%", "important");
+    var p = f.parentElement, g = p && p.parentElement;
+    [p, g].forEach(function (el) {
+      if (el && /ep-/.test(el.className || "")) el.style.setProperty("height", "auto", "important");
+    });
+  }
+  var sized = false;
+  reveal(); setH(floorH());
+  /* iFrameSizer posts "[iFrameSizer]<id>:<height>:<width>:init" */
+  window.addEventListener("message", function (e) {
+    if (!/leadconnector|basecampgetaways/.test(e.origin || "")) return;
+    var d = typeof e.data === "string" ? e.data : "";
+    if (d.indexOf("[iFrameSizer]") !== 0) return;
+    var m = d.match(/\[iFrameSizer\][^:]*:([0-9.]+):/);
+    if (m) {
+      var h = parseFloat(m[1]);
+      if (h > 500) { sized = true; setH(h + 24); }
+    }
+    reveal();
+  }, false);
+  /* form_embed.js can re-hide it after we run, so hold the line briefly. */
+  var t = setInterval(function () { reveal(); if (!sized) setH(floorH()); }, 400);
+  setTimeout(function () { clearInterval(t); }, 20000);
+  window.addEventListener("resize", function () { if (!sized) setH(floorH()); });
+})();
+</script>
+<script>
+/* -----------------------------------------------------------
+   OWNER INTRO VIDEO
+   ----------------------------------------------------------- */
+var VIDEO_SRC    = "/assets/owner-intro-v2.mp4";
+var VIDEO_POSTER = "/assets/owner-intro-poster.jpg";
+/* If the edited cut isn't uploaded yet, fall back to the first version rather
+   than showing nothing. */
+var VIDEO_FALLBACK        = "/assets/owner-intro.mp4";
+var VIDEO_FALLBACK_POSTER = "/assets/owner-intro-poster.jpg";
+
+/* -----------------------------------------------------------
+   MARKET TRACKING NUMBERS  (dynamic number insertion)
+   Mailer redirects land here as /offer?m=hartwell etc.
+   The number now appears only in the final CTA and the footer —
+   both carry class="phLink" and both swap by market.
+   ----------------------------------------------------------- */
+var DEFAULT_PHONE = "864-581-3164";
+var PHONES = {
+  hartwell:   "706-391-4424",
+  keowee:     "864-635-6307",
+  murray:     "803-723-7560",
+  blueridge:  "706-222-7424",
+  edisto:     "843-874-8257",
+  greenville: "864-920-1115"
+};
+
+/* -----------------------------------------------------------
+   MARKET NAMES for the on-page copy.
+   ?m=hartwell  ->  "Lake Hartwell place" in the headline.
+   No ?m= (broad Google/Facebook ads) falls back to the neutral
+   wording so the page still reads cleanly.
+   ----------------------------------------------------------- */
+var MARKET_NAMES = {
+  hartwell:   "Lake Hartwell",
+  keowee:     "Lake Keowee",
+  murray:     "Lake Murray",
+  blueridge:  "Blue Ridge",
+  edisto:     "Edisto",
+  greenville: "Greenville"
+};
+(function () {
+  var m = (new URLSearchParams(window.location.search).get("m") || "").toLowerCase();
+  var name = MARKET_NAMES[m] || "";
+  var head = document.getElementById("mktHead");
+  var home = document.getElementById("mktHome");
+  if (head) head.textContent = name ? name + " place" : "vacation rental";
+  if (home) home.textContent = name ? name + " home" : "home";
+})();
+(function () {
+  var m = (new URLSearchParams(window.location.search).get("m") || "").toLowerCase();
+  var num = (PHONES[m] && PHONES[m].trim()) || DEFAULT_PHONE;
+  var tel = "tel:" + num.replace(/[^0-9+]/g, "");
+  [].forEach.call(document.querySelectorAll(".phLink"), function (a) {
+    a.textContent = num; a.href = tel;
+  });
+  /* carry the market into the GHL form so the lead record keeps it */
+  if (m) {
+    var f = document.querySelector("iframe[data-form-id]");
+    if (f) { f.src += (f.src.indexOf("?") > -1 ? "&" : "?") + "market=" + encodeURIComponent(m); }
+  }
+})();
+(function () {
+  if (!VIDEO_SRC) return;
+  var wrap = document.getElementById("heroVideo"),
+      vid  = document.getElementById("ownerVideo"),
+      end  = document.getElementById("vidEnd");
+  if (!wrap || !vid) return;
+  if (VIDEO_POSTER) vid.setAttribute("poster", VIDEO_POSTER);
+  var s = document.createElement("source");
+  s.src = VIDEO_SRC; s.type = "video/mp4";
+  vid.appendChild(s); vid.load();
+  wrap.hidden = false;
+  var triedFallback = false;
+  function onSourceError() {
+    if (!triedFallback && VIDEO_FALLBACK) {
+      triedFallback = true;
+      s.src = VIDEO_FALLBACK;
+      if (VIDEO_FALLBACK_POSTER) vid.setAttribute("poster", VIDEO_FALLBACK_POSTER);
+      vid.load();
+      return;
+    }
+    wrap.hidden = true;
+  }
+  s.addEventListener("error", onSourceError);
+  vid.addEventListener("error", onSourceError);
+  /* Only show the end card after a real, unmuted watch. While the silent
+     preview is looping it would sit on top of the unmute overlay and trap
+     the viewer with no way to turn the sound on. */
+  vid.addEventListener("ended", function(){ if (end && !vid.muted) end.classList.add("show"); });
+  vid.addEventListener("play",  function(){ if (end) end.classList.remove("show"); });
+
+  /* --- GA4 video tracking ---------------------------------------------------
+     Milestones are measured from the UNMUTED restart, not from the muted
+     autoplay, so video_start still means "someone chose to watch this".
+     The muted autoplay is reported separately as video_autoplay. */
+  var fired = {};
+  function mark(name, pct) {
+    if (fired[name]) return;
+    fired[name] = true;
+    window.bcgTrack(name, {
+      video_title: "owner-intro-v2",
+      video_percent: pct,
+      video_duration: Math.round(vid.duration || 0)
+    });
+  }
+  vid.addEventListener("timeupdate", function () {
+    if (!vid.duration || vid.muted) return;
+    var p = (vid.currentTime / vid.duration) * 100;
+    if (p >= 25) mark("video_progress_25", 25);
+    if (p >= 50) mark("video_progress_50", 50);
+    if (p >= 75) mark("video_progress_75", 75);
+  });
+  vid.addEventListener("ended", function(){ if (!vid.muted) mark("video_complete", 100); });
+
+  /* --- Muted autoplay + click-to-unmute ------------------------------------
+     Browsers only allow autoplay when the video is muted, so it starts muted
+     with an overlay saying so. Clicking the overlay unmutes and restarts from
+     zero, which is the whole point — nobody should join Joseph's pitch
+     halfway through with the sound suddenly on. */
+  var cta  = document.getElementById("vidCta"),
+      line = document.getElementById("vidCtaLine"),
+      btn  = document.getElementById("vidCtaBtn"),
+      unmuted = false;
+
+  vid.muted = true;
+  vid.setAttribute("muted", "");
+  vid.loop = true;          /* silent preview loops until someone unmutes */
+
+  function autoplayBlocked() {
+    /* Autoplay refused (some mobile data-saver and battery-saver modes).
+       Fall back to a plain play prompt rather than lying about what's on. */
+    if (line) line.textContent = "Watch how the free projection works";
+    if (btn)  btn.textContent  = "Click to play";
+  }
+  var p = vid.play();
+  if (p && typeof p.catch === "function") {
+    p.then(function () {
+      window.bcgTrack("video_autoplay", { video_title: "owner-intro-v2" });
+    }).catch(autoplayBlocked);
+  }
+
+  function startWithSound() {
+    if (unmuted) return;
+    unmuted = true;
+    fired = {};                       /* measure the real watch from zero */
+    if (cta) cta.classList.add("hide");
+    if (end) end.classList.remove("show");
+    vid.muted = false;
+    vid.removeAttribute("muted");
+    vid.loop = false;
+    vid.currentTime = 0;
+    var r = vid.play();
+    if (r && typeof r.catch === "function") r.catch(function () {});
+    window.bcgTrack("video_unmute", { video_title: "owner-intro-v2" });
+    mark("video_start", 0);
+  }
+
+  if (cta) {
+    cta.addEventListener("click", startWithSound);
+    cta.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); startWithSound(); }
+    });
+  }
+})();
+
+/* --- CTA clicks --- */
+(function () {
+  [].forEach.call(document.querySelectorAll('a[href="#form"]'), function (a) {
+    a.addEventListener("click", function () {
+      window.bcgTrack("cta_click", {
+        cta_text: (a.innerText || "").trim().slice(0, 60),
+        cta_location: a.className.indexOf("sticky") > -1 ? "sticky_bar" : "page"
+      });
+    });
+  });
+  /* phone taps — the number only appears twice now, so both are worth counting */
+  [].forEach.call(document.querySelectorAll('a.phLink'), function (a) {
+    a.addEventListener("click", function () {
+      window.bcgTrack("phone_click", { phone_number: a.textContent.trim() });
+    });
+  });
+})();
+
+/* --- FAQ opens --- */
+(function () {
+  [].forEach.call(document.querySelectorAll('#faq details'), function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      var q = d.querySelector("summary");
+      window.bcgTrack("faq_open", { question: q ? q.textContent.trim().slice(0, 80) : "" });
+    });
+  });
+})();
+
+/* --- Scroll depth --- */
+(function () {
+  var hit = {}, marks = [25, 50, 75, 90];
+  function check() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if (h <= 0) return;
+    var pct = (window.scrollY / h) * 100;
+    marks.forEach(function (m) {
+      if (pct >= m && !hit[m]) { hit[m] = true; window.bcgTrack("scroll_depth", { percent: m }); }
+    });
+  }
+  window.addEventListener("scroll", check, { passive: true });
+  check();
+})();
+
+/* --- Form submission (belt and braces; launch.html also fires generate_lead) --- */
+(function () {
+  window.addEventListener("message", function (e) {
+    if (!/leadconnector|basecampgetaways/.test(e.origin || "")) return;
+    var d = e.data;
+    var s = typeof d === "string" ? d : (d && (d.type || d.event || d.action) || "");
+    if (/submit|success|complete/i.test(String(s))) {
+      window.bcgTrack("generate_lead", { form_id: "lP9XJGVu2IMp36QBKlM6" });
+    }
+  }, false);
+})();
+
+/* Drop lifestyle photos that 404 instead of leaving empty frames. */
+(function () {
+  [].forEach.call(document.querySelectorAll(".life img"), function (img) {
+    img.addEventListener("error", function () {
+      var cell = img.parentNode, grid = cell && cell.parentNode;
+      if (!grid) return;
+      grid.removeChild(cell);
+      if (!grid.querySelector("img")) {
+        grid.style.display = "none";
+        var cap = grid.nextElementSibling;
+        if (cap && cap.className === "lifecap") cap.style.display = "none";
+      }
+    });
+  });
+})();
+
+/* Same for team photos — until the real family photos are uploaded, a missing
+   file removes that card rather than leaving a grey box. If none load, the
+   whole section is hidden. */
+(function () {
+  function drop(img) {
+    var card = img.closest(".tm"), grid = document.getElementById("teamGrid");
+    if (card && card.parentNode) card.parentNode.removeChild(card);
+    if (grid && !grid.querySelector("img")) {
+      var sec = document.getElementById("team");
+      if (sec) sec.style.display = "none";
+    }
+  }
+  [].forEach.call(document.querySelectorAll("#teamGrid img"), function (img) {
+    img.addEventListener("error", function () { drop(img); });
+    /* catch files that already failed before this script ran */
+    if (img.complete && img.naturalWidth === 0) drop(img);
+  });
+})();
+</script>
+</body>
+</html>
